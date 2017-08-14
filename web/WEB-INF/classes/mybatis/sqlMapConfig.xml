@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration  
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"  
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>  
+	<!-- 配置mapper(由spring整合)
+	但是必须遵循：mapper.xml文件跟mapper.java同名且在同一个package中
+	 -->
+	 <!-- 全局setting配置，根据需要再加 -->
+	 <!-- 配置别名 -->
+	 <typeAliases>
+	 	<!-- 批量扫描 -->
+	 	<package name="com.nealblog.po"/>
+	 </typeAliases>
+</configuration>

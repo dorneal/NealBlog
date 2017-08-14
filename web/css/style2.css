@@ -1,0 +1,36 @@
+/* 字体设置 */
+.blue{
+	color: rgb(127, 255, 212)
+}
+.white{
+	color: rgb(255, 255, 255)
+}
+.gray{
+	color: rgb(211, 211, 211)
+}
+.red{
+	color: rgb(255, 228, 181)
+}
+.blue{
+	color: rgb(188, 238, 104)
+}
+.yellow{
+	color: rgb(255, 246, 143)
+}
+.violet{
+	color: rgb(106, 90, 205)
+}
+
+.fontbig{
+	font-size: 1.2em;
+}
+.fontmall{
+	font-size: .8em;
+}
+.fontmid{
+	font-size: .4em;
+}
+
+.nonea a{
+	text-decoration: none;
+}
