@@ -1,0 +1,71 @@
+数据库使用的是mysql
+
+表的创建以及表之间约束
+4个表（Author,Article,Commont,Category）
+DROP TABLE IF EXISTS Article;
+
+DROP TABLE IF EXISTS Author;
+
+DROP TABLE IF EXISTS Category;
+
+DROP TABLE IF EXISTS COMMENT;
+
+/*==============================================================*/
+/* Table: Article                                               */
+/*==============================================================*/
+CREATE TABLE Article
+(
+   ArticleId            INT NOT NULL,
+   AuthorId             INT,
+   CategoryId           INT,
+   ArticleTitle         VARCHAR(50),
+   ArticleContent       TEXT,
+   ClickCount           INT,
+   PRIMARY KEY (ArticleId)
+)ENGINE=INNODB;
+
+/*==============================================================*/
+/* Table: Author                                                */
+/*==============================================================*/
+CREATE TABLE Author
+(
+   AuthorId             INT NOT NULL,
+   AuthorName           VARCHAR(20),
+   AuthorPassword       CHAR(6),
+   PublishCount         int,
+   PublishTime          date,
+   primary key (AuthorId)
+)ENGINE=INNODB;
+
+/*==============================================================*/
+/* Table: Category                                              */
+/*==============================================================*/
+create table Category
+(
+   AuthorId             int not null,
+   CategoryId           int not null,
+   CategoryName         varchar(20),
+   primary key (AuthorId, CategoryId)
+)ENGINE=INNODB;
+
+/*==============================================================*/
+/* Table: Comment                                               */
+/*==============================================================*/
+create table Comment
+(
+   ArticleId            int,
+   CommentId            int not null,
+   Reviewer             varchar(20),
+   CommentContent       text,
+   ReplyContent         text,
+   primary key (CommentId)
+)ENGINE=INNODB;
+
+alter table Article add constraint FK_Reference_1 foreign key (AuthorId)
+      references Author (AuthorId) on delete restrict on update restrict;
+
+alter table Category add constraint FK_Reference_3 foreign key (AuthorId)
+      references Author (AuthorId) on delete restrict on update restrict;
+
+alter table Comment add constraint FK_Reference_2 foreign key (ArticleId)
+      references Article (ArticleId) on delete restrict on update restrict;
