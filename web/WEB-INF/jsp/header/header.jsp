@@ -16,22 +16,13 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">NealBlog</a>
+            <a class="navbar-brand" href="${pageContext.request.contextPath}/home.action">NealBlog</a>
         </div>
         <div class="collapse navbar-collapse" id="example-navbar-collapse">
             <ul class="nav navbar-nav">
                 <li class="active"><a href="${pageContext.request.contextPath}/home.action">首页</a></li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        笔记 <b class="caret"></b>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a href="${pageContext.request.contextPath}/dataStructure.action">数据结构</a></li>
-                        <li class="divider"></li>
-                        <li><a href="${pageContext.request.contextPath}/languages.action">编程语言</a></li>
-                        <li class="divider"></li>
-                        <li><a href="${pageContext.request.contextPath}/difficult.action">疑难杂症</a></li>
-                    </ul>
+                <li>
+                    <a href="${pageContext.request.contextPath}/note.action">笔记</a>
                 </li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -65,7 +56,7 @@
 
 <!-- 模态框（Modal） -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal-dialog ">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
@@ -77,15 +68,13 @@
             </div>
             <form method="post" name="login" action="${pageContext.request.contextPath}/login.action">
                 <div class="modal-body">
-                    <div class="row">
-                        <div class="col-md-4 col-lg-4 col-sm-4 text-right">
-                            <label>用户名：</label><br>
-                            <label>密码：</label>
-                        </div>
-                        <div class="col-md-8 col-lg-8 col-sm-8 text-left">
-                            <label><input name="authorEx.authorname"></label>
-                            <label><input type="password" name="authorEx.authorpassword"></label>
-                        </div>
+                    <div class="form-group">
+                        <label class="control-label">用户名：</label>
+                        <input class="form-control" name="authorEx.authorname">
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">密码：</label>
+                        <input type="password" class="form-control" name="authorEx.authorpassword">
                     </div>
                 </div>
                 <div class="modal-footer">

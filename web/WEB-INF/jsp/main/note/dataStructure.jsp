@@ -1,18 +1,4 @@
 <%@ page pageEncoding="UTF-8" %>
-<jsp:include page="header/header-res.jsp"/>
-<body style="position: static">
-<jsp:include page="header/header.jsp"/>
-
-<jsp:include page="header/header-img.jsp"/>
-
-<div class="disc container">
-		<div class="row">
-			<div class="col-md-4" style="background-color: rgb(211, 211, 211);">
-				<div class="" style="margin-top: 20px;">
-					<label><input type="search" name="search"></label>
-					<label><input type="button" class="btn-default" name="" onclick="" value="搜索"></label>
-				</div>
-				<div>
 					<h3>数据结构</h3>
 						<div class="panel-group" id="panel-508557">
 								<div class="panel panel-default">
@@ -85,56 +71,3 @@
 									</div>
 								</div>
 							</div>
-				</div>
-			</div>
-			<div class="col-md-8">
-				<div>
-					<div class="page_header">
-						<h3 class="text-center"><a href="">《Nginx官方文档》使用nginx作为HTTP负载均衡</a></h3>
-						<div class="page_contents">
-							<h2 class="text-center">介绍</h2>
-							<div>
-								       &nbsp;&nbsp;&nbsp;&nbsp;跨多个应用程序实例进行负载均衡是一种常用的技术，它被用于优化资源的利用率， 最大化吞吐量，减少延迟并确保容错配置。
-							</div>
-							<div>
-								       &nbsp;&nbsp;&nbsp;&nbsp;可以使用nginx作为一个非常有效的HTTP负载均衡器，将流量分配给多台应用服务器，并通过nginx提高Web应用程序的性能，可扩展性和高可靠性。
-							</div>
-							<p><a href="" charset="btn-default">Read More</a></p>
-						</div>
-					</div>
-					<div class="page_header">
-						<h3 class="text-center"><a href="">《Nginx官方文档》使用nginx作为HTTP负载均衡</a></h3>
-						<div class="page_contents">
-							<h2 class="text-center">介绍</h2>
-							<div>
-								       &nbsp;&nbsp;&nbsp;&nbsp;跨多个应用程序实例进行负载均衡是一种常用的技术，它被用于优化资源的利用率， 最大化吞吐量，减少延迟并确保容错配置。
-							</div>
-							<div>
-								       &nbsp;&nbsp;&nbsp;&nbsp;可以使用nginx作为一个非常有效的HTTP负载均衡器，将流量分配给多台应用服务器，并通过nginx提高Web应用程序的性能，可扩展性和高可靠性。
-							</div>
-							<p><a href="" charset="btn-default">Read More</a></p>
-						</div>
-					</div>
-					<div class="page_header">
-						<h3 class="text-center"><a href="">《Nginx官方文档》使用nginx作为HTTP负载均衡</a></h3>
-						<div class="page_contents">
-							<h2 class="text-center">介绍</h2>
-							<div>
-								       &nbsp;&nbsp;&nbsp;&nbsp;跨多个应用程序实例进行负载均衡是一种常用的技术，它被用于优化资源的利用率， 最大化吞吐量，减少延迟并确保容错配置。
-							</div>
-							<div>
-								       &nbsp;&nbsp;&nbsp;&nbsp;可以使用nginx作为一个非常有效的HTTP负载均衡器，将流量分配给多台应用服务器，并通过nginx提高Web应用程序的性能，可扩展性和高可靠性。
-							</div>
-							<p><a href="" charset="btn-default">Read More</a></p>
-						</div>
-					</div>
-					<div class="page_count">
-						<p class="text-center"><a href="">上一页</a> | <a href="">下一页</a></p>
-					</div>
-				</div>
-			</div>
-		</div>
-	 </div>
-<jsp:include page="footer/footer.jsp"/>
-</body>
-</html>

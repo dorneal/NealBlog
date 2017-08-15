@@ -40,16 +40,8 @@ public class LoginController {
     public String home(){
         return "index";
     }
-    @RequestMapping("/difficult")
-    public String difficult(){
-        return "difficult";
-    }
-    @RequestMapping("/dataStructure")
-    public String dataStructure(){
-        return "dataStructure";
-    }
-    @RequestMapping("/languages")
-    public String languages(){
-        return "languages";
+    @RequestMapping("/note")
+    public String note(){
+        return "main/note/note-catalog";
     }
 }
