@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.nealblog.mapper.AuthorMapper">
-  <resultMap id="BaseResultMap" type="com.nealblog.po.Author">
+  <resultMap id="BaseResultMap" type="com.nealblog.po.AuthorEx">
     <id column="AuthorId" jdbcType="INTEGER" property="authorid" />
     <result column="AuthorName" jdbcType="VARCHAR" property="authorname" />
     <result column="AuthorPassword" jdbcType="CHAR" property="authorpassword" />
@@ -83,7 +83,7 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByAuthorEx" parameterType="com.nealblog.po.AuthorEx" resultMap="BaseResultMap">
+  <select id="selectByAuthorEx" parameterType="com.nealblog.po.AuthorVo" resultMap="BaseResultMap">
     SELECT
     <include refid="Base_Column_List" />
     FROM author

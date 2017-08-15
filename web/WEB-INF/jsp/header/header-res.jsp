@@ -11,10 +11,4 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath }/css/style3.css">
     <script src="${pageContext.request.contextPath }/js/jquery-3.2.1.js"></script>
     <script src="${pageContext.request.contextPath }/js/bootstrap.min.js"></script>
-    <script type="text/javascript">
-        function login(){
-            document.login.action="${pageContext.request.contextPath}/login.action";
-            document.login.submit();
-        }
-    </script>
 </head>

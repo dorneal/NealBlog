@@ -1,6 +1,7 @@
 package com.nealblog.controller;
 
 import com.nealblog.po.AuthorEx;
+import com.nealblog.po.AuthorVo;
 import com.nealblog.service.AuthorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,13 +19,37 @@ public class LoginController {
     @Autowired
     private AuthorService authorService;
 
+    //登录
     @RequestMapping("/login")
-    public String login(HttpSession session, AuthorEx authorEx){
-        AuthorEx authorEx1 = authorService.login(authorEx);
+    public String login(HttpSession session, AuthorVo authorVo){
+        AuthorEx authorEx1 = authorService.login(authorVo);
         if(authorEx1!=null){
             session.setAttribute("user",authorEx1);
-            return "redirect:index.jsp";
+            return "redirect:home.action";
         }
-        return "redirect:index.jsp";
+        return "redirect:home.action";
+    }
+    //退出
+    @RequestMapping("logout")
+    public String logout(HttpSession session){
+        session.invalidate();
+        return "redirect:home.action";
+    }
+
+    @RequestMapping("/home")
+    public String home(){
+        return "index";
+    }
+    @RequestMapping("/difficult")
+    public String difficult(){
+        return "difficult";
+    }
+    @RequestMapping("/dataStructure")
+    public String dataStructure(){
+        return "dataStructure";
+    }
+    @RequestMapping("/languages")
+    public String languages(){
+        return "languages";
     }
 }

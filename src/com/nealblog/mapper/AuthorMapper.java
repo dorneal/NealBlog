@@ -4,6 +4,8 @@ import com.nealblog.po.Author;
 import com.nealblog.po.AuthorEx;
 import com.nealblog.po.AuthorExample;
 import java.util.List;
+
+import com.nealblog.po.AuthorVo;
 import org.apache.ibatis.annotations.Param;
 
 public interface AuthorMapper {
@@ -21,7 +23,7 @@ public interface AuthorMapper {
 
     Author selectByPrimaryKey(Integer authorid);
 
-    AuthorEx selectByAuthorEx(AuthorEx authorEx);
+    AuthorEx selectByAuthorEx(AuthorVo authorVo);
 
     int updateByExampleSelective(@Param("record") Author record, @Param("example") AuthorExample example);
 

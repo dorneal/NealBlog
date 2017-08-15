@@ -3,15 +3,7 @@
 <body style="position: static">
 <jsp:include page="header/header.jsp"/>
 
-<div class="main" style="margin-top: 50px;">
-	<div id="myCarousel" class="carousel slide">
-		<div class="carousel-inner">
-			<div class="item active">
-				<img src="./../../imgs/b1.jpg" style="width: 100%;max-height: 366px" alt="First slide">
-			</div>
-		</div>
-	</div>
-</div>
+<jsp:include page="header/header-img.jsp"/>
 
 <div class="disc container">
 		<div class="row">
