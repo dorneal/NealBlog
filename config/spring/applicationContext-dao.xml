@@ -18,7 +18,7 @@
 				<property name="initialSize" value="${jdbc.initialSize}"/>
 				<property name="maxActive" value="${jdbc.maxActive}"/>
 				<property name="maxIdle" value="${jdbc.maxIdle}"/>
-				<property name="minIdle" value="${jdbc.maxIdle}"/>
+				<property name="minIdle" value="${jdbc.minIdle}"/>
 				<property name="minEvictableIdleTimeMillis" value="${jdbc.minEvictableIdleTimeMillis}"/>
             </bean>
             
