@@ -29,17 +29,22 @@ public class LoginController {
         }
         return "redirect:home.action";
     }
+
     //退出
     @RequestMapping("logout")
     public String logout(HttpSession session){
         session.invalidate();
         return "redirect:home.action";
+
     }
 
+    //返回主页
     @RequestMapping("/home")
     public String home(){
         return "index";
     }
+
+    //返回笔记页面
     @RequestMapping("/note")
     public String note(){
         return "main/note/note-catalog";

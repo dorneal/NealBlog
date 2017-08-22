@@ -12,7 +12,6 @@ public class AuthorServiceImpl implements AuthorService {
 
     @Override
     public AuthorEx login(AuthorVo authorVo) {
-        AuthorEx authorEx = authorMapper.selectByAuthorEx(authorVo);
-        return authorEx;
+        return authorMapper.selectByAuthorEx(authorVo);
     }
 }
