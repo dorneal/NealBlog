@@ -1,7 +1,7 @@
 NealBlog
 
-环境准备：
-工具使用：
+1.环境准备：
+1.1工具使用：
 IntelliJ IDEA 2017.2.1 x64
 JDK 1.8.0_144
 Tomcat 8.0
