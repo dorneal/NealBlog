@@ -33,6 +33,7 @@
 			<jsp:include page="../news/newsAndOther.jsp"/>
         </div>
 </div>
+<jsp:include page="./../../header/redirectTop.jsp"/>
 <jsp:include page="../../footer/footer.jsp"/>
 </body>
 </html>

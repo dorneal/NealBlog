@@ -1,0 +1,12 @@
+/*评论框*/
+.commentFrame {
+    font-family: "Helvetica Neue",helvetica,arial,sans-serif;
+    font-size: 14px;
+    height: 80px;
+    line-height: 22px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    resize: none;
+    width: 100%;
+    _overflow-y: hidden
+}

@@ -1,6 +1,7 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="NealBlog" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 8.5.20" ALTERNATIVE_JRE_ENABLED="false">
-    <option name="UPDATING_POLICY" value="restart-server" />
+    <option name="SHOW_DIALOG_ON_UPDATE" value="false" />
+    <option name="UPDATING_POLICY" value="update-resources" />
     <deployment>
       <artifact name="NealBlog:war exploded">
         <settings>

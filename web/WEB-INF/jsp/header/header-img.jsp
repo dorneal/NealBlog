@@ -10,7 +10,7 @@
     <div id="myCarousel" class="carousel slide">
         <div class="carousel-inner">
             <div class="item active">
-                <img src="${pageContext.request.contextPath}/imgs/b1.jpg" style="width: 100%;max-height: 366px" alt="First slide">
+                <img src="${pageContext.request.contextPath}/imgs/b1.jpg" style="width: 100%;min-height: 30px" alt="First slide">
             </div>
         </div>
     </div>

@@ -1,8 +1,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <script type="text/javascript">
-    function authorLogin(){
-        document.login.action="${pageContext.request.contextPath}/login.action";
+    function authorLogin() {
+        document.login.action = "${pageContext.request.contextPath}/login.action";
         document.login.submit();
     }
 </script>
@@ -29,33 +29,44 @@
                         推荐 <b class="caret"></b>
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a href="https://www.nowcoder.com/">牛客网</a></li>
-                        <li><a href="http://www.w3school.com.cn/">W3C</a></li>
-                        <li><a href="https://www.codewars.com/">CodeWars</a></li>
+                        <li><a href="https://www.nowcoder.com/" target="_blank">牛客网</a></li>
+                        <li><a href="http://www.w3school.com.cn/" target="_blank">W3C</a></li>
+                        <li><a href="https://www.codewars.com/" target="_blank">CodeWars</a></li>
                         <li class="divider"></li>
-                        <li><a href="https://stackoverflow.com/">Stack Overflow</a></li>
+                        <li><a href="https://stackoverflow.com/" target="_blank">Stack Overflow</a></li>
                         <li class="divider"></li>
-                        <li><a href="http://ifeve.com/">并发编程网</a></li>
+                        <li><a href="http://ifeve.com/" target="_blank">并发编程网</a></li>
                     </ul>
                 </li>
+                <li>
+                    <a href="${pageContext.request.contextPath}/article.action">个人文章</a>
+                </li>
+                <li>
+                    <a href="${pageContext.request.contextPath}/aboutMe.action">关于我</a>
+
+                </li>
+                <li>
+                    <a href="${pageContext.request.contextPath}/comment.action">给我留言</a>
+                </li>
             </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <c:if test="${user!=null}">
-                    <li><a href="#"><span class="glyphicon glyphicon-user"></span> ${user.authorname}</a></li>
-                    <li><a href="${pageContext.request.contextPath}/logout.action"><span class="glyphicon glyphicon-log-in"></span> 退出</a></li>
-                </c:if>
-                <c:if test="${user==null}">
-                    <li><a href="#" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-user"></span> 登录</a></li>
-                    <li><a><span class="glyphicon glyphicon-log-in"></span> 退出</a></li>
-                </c:if>
-            </ul>
+            <%--暂时不需要登录模块--%>
+            <%-- <ul class="nav navbar-nav navbar-right">
+                 <c:if test="${user!=null}">
+                     <li><a href="#"><span class="glyphicon glyphicon-user"></span> ${user.authorname}</a></li>
+                     <li><a href="${pageContext.request.contextPath}/logout.action"><span class="glyphicon glyphicon-log-in"></span> 退出</a></li>
+                 </c:if>
+                 <c:if test="${user==null}">
+                     <li><a href="#" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-user"></span> 登录</a></li>
+                     <li><a><span class="glyphicon glyphicon-log-in"></span> 退出</a></li>
+                 </c:if>
+             </ul>--%>
         </div>
     </div>
 </nav>
 
 
 <!-- 模态框（Modal） -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<%--<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog ">
         <div class="modal-content">
             <div class="modal-header">
@@ -87,4 +98,4 @@
             </form>
         </div>
     </div>
-</div>
+</div>--%>

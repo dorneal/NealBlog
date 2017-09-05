@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath }/css/style.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath }/css/style2.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath }/css/style3.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath }/css/mystyle.css">
     <link rel="shortcut icon" href="${pageContext.request.contextPath}/imgs/icon/icon.ico">
     <script src="${pageContext.request.contextPath }/js/jquery-3.2.1.js"></script>
     <script src="${pageContext.request.contextPath }/js/bootstrap.min.js"></script>
