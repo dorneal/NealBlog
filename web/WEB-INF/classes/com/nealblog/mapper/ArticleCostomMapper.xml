@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nealblog.mapper.ArticleCostomMapper">
+
+    <!--文章resultMap-->
+    <resultMap id="StringResultMap" type="com.nealblog.po.ArticleEx">
+        <id column="ArticleId" jdbcType="INTEGER" property="articleid"/>
+        <result column="AuthorId" jdbcType="INTEGER" property="authorid"/>
+        <result column="CategoryId" jdbcType="INTEGER" property="categoryid"/>
+        <result column="ArticleTitle" jdbcType="VARCHAR" property="articletitle"/>
+        <result column="ClickCount" jdbcType="INTEGER" property="clickcount"/>
+    </resultMap>
+    <!--加文章正文的文章resultMap-->
+    <resultMap extends="StringResultMap" id="ResultContent" type="com.nealblog.po.ArticleEx">
+        <result column="ArticleContent" jdbcType="LONGVARCHAR" property="articlecontent"/>
+    </resultMap>
+
+    <!--关联查询的resutlMap-->
+    <resultMap id="AACResultMap" type="com.nealblog.po.ArticleVo">
+        <!--关联作者-->
+        <collection column="author" property="author" javaType="com.nealblog.po.AuthorEx">
+            <result column="AuthorName" property="authorname" jdbcType="VARCHAR"/>
+        </collection>
+        <!--关联类别-->
+        <collection column="category" property="category" javaType="com.nealblog.po.Category">
+            <result column="CategoryName" property="categoryname" jdbcType="VARCHAR"/>
+        </collection>
+        <!--关联文章-->
+        <collection column="article" property="article" javaType="com.nealblog.po.ArticleEx">
+            <result column="ArticleTitle" jdbcType="VARCHAR" property="articletitle"/>
+            <result column="ClickCount" jdbcType="INTEGER" property="clickcount"/>
+            <result column="ArticleContent" jdbcType="LONGVARCHAR" property="articlecontent"/>
+        </collection>
+    </resultMap>
+
+    <!--查找所有文章标题，显示在目录树-->
+    <select id="findArticleTitle" resultMap="StringResultMap">
+    SELECT ArticleTitle FROM article
+    </select>
+    <!--查找最近的文章，显示在右边简要显示-->
+    <select id="findNowArticle" resultMap="StringResultMap">
+    SELECT ArticleTitle,AuthorId,CategoryId FROM article
+    </select>
+
+    <!--查找点击后的正文-->
+    <select id="findArticleContext" parameterType="java.lang.String" resultMap="AACResultMap">
+        SELECT
+            category.CategoryName,
+            author.AuthorName,
+            article.ArticleTitle,
+            article.ArticleContent,
+            article.ClickCount
+        FROM
+            article,
+            author,
+            category
+        WHERE
+            article.ArticleTitle=#{ArticleTitle}
+    </select>
+</mapper>

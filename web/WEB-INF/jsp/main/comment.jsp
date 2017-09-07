@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page pageEncoding="UTF-8" %>
 <jsp:include page="./../header/header-res.jsp"/>
@@ -10,7 +11,7 @@
     <div class="row">
         <div class="col-md-2"></div>
         <div class="col-md-6">
-            <form action="">
+            <form action="" method="post">
                 <div class=""><h3>留下你的脚印</h3>
                     <textarea placeholder="我有话说..." class="commentFrame">
                     </textarea>
@@ -34,54 +35,12 @@
         <div class="col-md-2"></div>
         <div class="col-md-6">
             <div style="border-bottom: 1px solid #3c3c3c;"><h4>已有评论</h4></div>
-            <div class="">
-                <div>用户1：</div>
-                <div>他说：做的不错呦！！！</div>
-            </div>
-            <div class="">
-                <div>用户1：</div>
-                <div>他说：做的不错呦！！！</div>
-            </div>
-            <div class="">
-                <div>用户1：</div>
-                <div>他说：做的不错呦！！！</div>
-            </div>
-            <div class="">
-                <div>用户1：</div>
-                <div>他说：做的不错呦！！！</div>
-            </div>
-            <div class="">
-                <div>用户1：</div>
-                <div>他说：做的不错呦！！！</div>
-            </div>
-            <div class="">
-                <div>用户1：</div>
-                <div>他说：做的不错呦！！！</div>
-            </div>
-            <div class="">
-                <div>用户1：</div>
-                <div>他说：做的不错呦！！！</div>
-            </div>
-            <div class="">
-                <div>用户1：</div>
-                <div>他说：做的不错呦！！！</div>
-            </div>
-            <div class="">
-                <div>用户1：</div>
-                <div>他说：做的不错呦！！！</div>
-            </div>
-            <div class="">
-                <div>用户1：</div>
-                <div>他说：做的不错呦！！！</div>
-            </div>
-            <div class="">
-                <div>用户1：</div>
-                <div>他说：做的不错呦！！！</div>
-            </div>
-            <div class="">
-                <div>用户1：</div>
-                <div>他说：做的不错呦！！！</div>
-            </div>
+            <%--<c:forEach items="${comments}" var="comment">--%>
+                <div class="">
+                    <div>用户1：</div>
+                    <div>他说：做的不错呦！！！</div>
+                </div>
+            <%--</c:forEach>--%>
         </div>
         <div class="col-md-2"></div>
     </div>

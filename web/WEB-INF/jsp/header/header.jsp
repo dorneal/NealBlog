@@ -39,7 +39,7 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="${pageContext.request.contextPath}/article.action">个人文章</a>
+                    <a href="${pageContext.request.contextPath}/nowArticle.action">个人文章</a>
                 </li>
                 <li>
                     <a href="${pageContext.request.contextPath}/aboutMe.action">关于我</a>

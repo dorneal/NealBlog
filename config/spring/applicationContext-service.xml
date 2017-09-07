@@ -4,5 +4,8 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
             http://www.springframework.org/schema/beans/spring-beans.xsd">
             <!-- service -->
+    <!--作者service-->
     <bean id="authorService" class="com.nealblog.service.impl.AuthorServiceImpl"/>
+    <!--文章service-->
+    <bean id="articleService" class="com.nealblog.service.impl.ArticleServiceImpl"/>
 </beans>
