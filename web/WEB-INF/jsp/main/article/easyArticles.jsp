@@ -7,13 +7,14 @@
             <c:forEach items="${nowArticleData}" var="nat">
                 <div class="page_header">
                     <h3 class="text-center">
-                        <a href="#">${nat.articletitle}</a></h3>
+                        <a href="${pageContext.request.contextPath}/articleContext.action?ArticleTitle=${nat.article.articletitle}">${nat.article.articletitle}</a></h3>
                     <div class="page_contents">
                         <div>
-                                ${nat.categoryid}
+                                ${nat.category.categoryname}
                         </div>
-                        <p><a href="#" charset="btn-default">Read More</a>
-                        <p>来源：<span>${nat.authorid}</span></p></p>
+                        <p><a href="${pageContext.request.contextPath}/articleContext.action?ArticleTitle=${nat.article.articletitle}" charset="btn-default">Read More</a>
+                        <p>来源：<span>${nat.author.authorname}</span></p>
+                        <p>点击数：<span>${nat.article.clickcount}</span></p>
                     </div>
                 </div>
             </c:forEach>

@@ -13,7 +13,7 @@ public interface ArticleCostomMapper {
     List<ArticleEx> findArticleTitle();
 
     //查找简要文章
-    List<ArticleEx> findNowArticle();
+    List<ArticleVo> findNowArticle();
 
     //根据链接所给的文章标题查找正文
     List<ArticleVo> findArticleContext(String articleTitle);

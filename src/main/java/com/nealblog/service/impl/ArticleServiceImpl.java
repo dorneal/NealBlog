@@ -38,7 +38,7 @@ public class ArticleServiceImpl implements ArticleService {
      *
      * @return
      */
-    public List<ArticleEx> findNowArticle() {
+    public List<ArticleVo> findNowArticle() {
         return articleCostomMapper.findNowArticle();
     }
 }

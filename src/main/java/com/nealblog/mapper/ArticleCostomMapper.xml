@@ -38,8 +38,8 @@
     SELECT ArticleTitle FROM article
     </select>
     <!--查找最近的文章，显示在右边简要显示-->
-    <select id="findNowArticle" resultMap="StringResultMap">
-    SELECT ArticleTitle,AuthorId,CategoryId FROM article
+    <select id="findNowArticle" resultMap="AACResultMap">
+    SELECT article.ArticleTitle,author.AuthorName,article.ClickCount,category.CategoryName FROM article,author,category
     </select>
 
     <!--查找点击后的正文-->

@@ -40,7 +40,7 @@ public class ArticleController {
      */
     @RequestMapping("/nowArticle")
     public String nowArticle(HttpServletRequest request){
-        List<ArticleEx> nowArticleData = articleService.findNowArticle();
+        List<ArticleVo> nowArticleData = articleService.findNowArticle();
         request.setAttribute("nowArticleData", nowArticleData);
         return "forward:/articleTitle.action";
     }
