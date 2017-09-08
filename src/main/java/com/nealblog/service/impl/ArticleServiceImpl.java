@@ -29,8 +29,8 @@ public class ArticleServiceImpl implements ArticleService {
      *
      * @return
      */
-    public List<ArticleVo> findArticleContent(String articleTitle) {
-        return articleCostomMapper.findArticleContext(articleTitle);
+    public ArticleVo findArticleContent(String articleTitle) {
+        return articleCostomMapper.findArticleContent(articleTitle);
     }
 
     /**

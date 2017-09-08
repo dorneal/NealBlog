@@ -7,36 +7,45 @@
             <c:forEach items="${nowArticleData}" var="nat">
                 <div class="page_header">
                     <h3 class="text-center">
-                        <a href="${pageContext.request.contextPath}/articleContext.action?ArticleTitle=${nat.article.articletitle}">${nat.article.articletitle}</a></h3>
+                        <a href="${pageContext.request.contextPath}/articleContext.action?ArticleTitle=${nat.article.articletitle}">${nat.article.articletitle}</a>
+                    </h3>
                     <div class="page_contents">
                         <div>
-                                ${nat.category.categoryname}
+                                ${nat.article.easycontent}
                         </div>
-                        <p><a href="${pageContext.request.contextPath}/articleContext.action?ArticleTitle=${nat.article.articletitle}" charset="btn-default">Read More</a>
+                        <p>
+                            <a href="${pageContext.request.contextPath}/articleContext.action?ArticleTitle=${nat.article.articletitle}"
+                               charset="btn-default">Read More</a>
                         <p>来源：<span>${nat.author.authorname}</span></p>
                         <p>点击数：<span>${nat.article.clickcount}</span></p>
                     </div>
                 </div>
             </c:forEach>
-            <div class="page_count">
-                <p class="text-center"><a href="">上一页</a> | <a href="">下一页</a></p>
-            </div>
+            <ul class="pagination">
+                <li><a href="#">&laquo;</a></li>
+                <li class="active"><a href="#">1</a></li>
+                <li class="disabled"><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#">4</a></li>
+                <li><a href="#">5</a></li>
+                <li><a href="#">&raquo;</a></li>
+            </ul>
         </c:if>
         <%--如果点击的是显示正文，显示正文--%>
         <c:if test="${articleData!=null}">
         <div class="page_header">
-            <h3 class="text-center">
-                <a href="#">${articleData[0].article.articletitle}</a></h3>
+            <h2 class="text-center">
+                    ${articleData.article.articletitle}</h2>
             <div class="page_contents">
                 <div class="page_contents">
-                    <div class="col-md-9"></div>
-                    <div class="col-md-3">
-                    <p>来源：<span>${articleData[0].author.authorname}</span></p>
-                    <p>类别：<span>${articleData[0].category.categoryname}</span></p>
-                    <p>点击数：<span>${articleData[0].article.clickcount}</span>
-                    </p></div>
+                    <div class="col-md-7"></div>
+                    <div class="col-md-5" style="margin: 0;padding: 0;">
+                        <p><span class="glyphicon glyphicon-user"></span> ${articleData.author.authorname}&nbsp;&nbsp;
+                            <span class="glyphicon glyphicon-tags"></span>&nbsp;&nbsp;${articleData.category.categoryname}&nbsp;&nbsp;
+                                ${articleData.article.clickcount} <span class="glyphicon glyphicon-eye-open"></span>
+                        </p></div>
                     <div>
-                            ${articleData[0].article.articlecontent}
+                            ${articleData.article.articlecontent}
                     </div>
                 </div>
             </div>

@@ -34,7 +34,7 @@ public class ArticleController {
     }
 
     /**
-     * 查询显示左边简要文章
+     * 查询显示右边简要文章
      * @param request
      * @return
      */
@@ -52,7 +52,7 @@ public class ArticleController {
     public String articleContext(HttpServletRequest request) {
         //获取所点击的文章标题
         String articleTitle = request.getParameter("ArticleTitle");
-        List<ArticleVo> articleData = articleService.findArticleContent(articleTitle);
+        ArticleVo articleData = articleService.findArticleContent(articleTitle);
         request.setAttribute("articleData",articleData);
         return "forward:/articleTitle.action";
     }

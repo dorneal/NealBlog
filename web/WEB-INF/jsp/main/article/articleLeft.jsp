@@ -7,9 +7,9 @@
         </h3>
     </div>
     <div class="panel-body">
-        <ul>
+        <ul style="padding: 0;">
             <c:forEach items="${articleTitle}" var="at">
-                <li><a href="${pageContext.request.contextPath}/articleContext.action?ArticleTitle=${at.articletitle}">${at.articletitle}</a></li>
+                <li style="list-style-type: none;margin-bottom: 5px;"><a href="${pageContext.request.contextPath}/articleContext.action?ArticleTitle=${at.articletitle}">${at.articletitle}(<span class="glyphicon glyphicon-stats"></span>：${at.clickcount})</a></li>
             </c:forEach>
         </ul>
     </div>

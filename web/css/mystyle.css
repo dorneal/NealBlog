@@ -1,6 +1,6 @@
 /*评论框*/
 .commentFrame {
-    font-family: "Helvetica Neue",helvetica,arial,sans-serif;
+    font-family: "Helvetica Neue", helvetica, arial, sans-serif;
     font-size: 14px;
     height: 80px;
     line-height: 22px;
@@ -9,4 +9,34 @@
     resize: none;
     width: 100%;
     _overflow-y: hidden
+}
+
+/**
+返回顶部样式
+ */
+#elevator_item {
+    width: 60px;
+    height: 100px;
+    position: fixed;
+    right: 15px;
+    bottom: 100px;
+    -webkit-transition: opacity .4s ease-in-out;
+    -moz-transition: opacity .4s ease-in-out;
+    -o-transition: opacity .4s ease-in-out;
+    opacity: 1;
+    z-index: 100020;
+    display: none;
+}
+
+#elevator {
+    display: block;
+    width: 60px;
+    height: 50px;
+    background: url(./../imgs/icon/icon_top.png) center center no-repeat;
+    background-color: #444;
+    background-color: rgba(0, 0, 0, .6);
+    border-radius: 2px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, .2);
+    cursor: pointer;
+    margin-bottom: 10px;
 }

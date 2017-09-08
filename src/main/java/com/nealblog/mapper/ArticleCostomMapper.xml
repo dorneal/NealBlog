@@ -30,21 +30,22 @@
             <result column="ArticleTitle" jdbcType="VARCHAR" property="articletitle"/>
             <result column="ClickCount" jdbcType="INTEGER" property="clickcount"/>
             <result column="ArticleContent" jdbcType="LONGVARCHAR" property="articlecontent"/>
+            <result column="easyContent" jdbcType="VARCHAR" property="easycontent"/>
         </collection>
     </resultMap>
 
     <!--查找所有文章标题，显示在目录树-->
     <select id="findArticleTitle" resultMap="StringResultMap">
-    SELECT ArticleTitle FROM article
+    SELECT ArticleTitle,ClickCount FROM article WHERE article.ArticleTime LIKE "2017%" GROUP BY article.ArticleTime DESC
     </select>
     <!--查找最近的文章，显示在右边简要显示-->
     <select id="findNowArticle" resultMap="AACResultMap">
-    SELECT article.ArticleTitle,author.AuthorName,article.ClickCount,category.CategoryName FROM article,author,category
-    </select>
+SELECT article.ArticleTitle,author.AuthorName,article.ClickCount,article.easyContent,category.CategoryName FROM article,author,category WHERE article.ArticleTime LIKE "2017%" GROUP BY ClickCount DESC
+  </select>
 
     <!--查找点击后的正文-->
-    <select id="findArticleContext" parameterType="java.lang.String" resultMap="AACResultMap">
-        SELECT
+    <select id="findArticleContent" parameterType="java.lang.String" resultMap="AACResultMap">
+        SELECT DISTINCT
             category.CategoryName,
             author.AuthorName,
             article.ArticleTitle,
@@ -56,5 +57,9 @@
             category
         WHERE
             article.ArticleTitle=#{ArticleTitle}
+        AND
+            article.AuthorId=author.AuthorId
+        AND
+            article.CategoryId=Category.CategoryId
     </select>
 </mapper>

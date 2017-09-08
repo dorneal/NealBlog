@@ -5,6 +5,16 @@
         document.login.action = "${pageContext.request.contextPath}/login.action";
         document.login.submit();
     }
+    $(document).ready(function () {
+        $("ul#nav").find("li").each(function () {
+            var a = $(this).find("a:first")[0];
+            if ($(a).attr("href") === location.pathname) {
+                $(this).addClass("active");
+            } else {
+                $(this).removeClass("active");
+            }
+        });
+    });
 </script>
 <nav class="navbar navbar-default navbar-fixed-top navbar-inverse" role="navigation">
     <div class="container-fluid container">
@@ -19,7 +29,7 @@
             <a class="navbar-brand" href="${pageContext.request.contextPath}/home.action">NealBlog</a>
         </div>
         <div class="collapse navbar-collapse" id="example-navbar-collapse">
-            <ul class="nav navbar-nav">
+            <ul class="nav navbar-nav" id="nav">
                 <li class="active"><a href="${pageContext.request.contextPath}/home.action">首页</a></li>
                 <li>
                     <a href="${pageContext.request.contextPath}/note.action">笔记</a>

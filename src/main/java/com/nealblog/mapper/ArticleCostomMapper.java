@@ -16,5 +16,5 @@ public interface ArticleCostomMapper {
     List<ArticleVo> findNowArticle();
 
     //根据链接所给的文章标题查找正文
-    List<ArticleVo> findArticleContext(String articleTitle);
+    ArticleVo findArticleContent(String articleTitle);
 }
