@@ -2,6 +2,7 @@ package com.nealblog.service;
 
 import com.nealblog.po.ArticleEx;
 import com.nealblog.po.ArticleVo;
+import com.nealblog.po.PageBean;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -10,8 +11,10 @@ import java.util.List;
 public interface ArticleService {
     //查找文章标题,显示在左边栏
     List<ArticleEx> findArticleTitle();
+
     //查找文章主文，返回页面json
     ArticleVo findArticleContent(String articleTitle);
-    //查找文章简要
-    List<ArticleVo> findNowArticle();
+
+    //封装每页数据
+    PageBean<ArticleVo> findPageData(int currentPage);
 }

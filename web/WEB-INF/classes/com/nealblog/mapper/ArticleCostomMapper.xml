@@ -36,11 +36,27 @@
 
     <!--查找所有文章标题，显示在目录树-->
     <select id="findArticleTitle" resultMap="StringResultMap">
-    SELECT ArticleTitle,ClickCount FROM article WHERE article.ArticleTime LIKE "2017%" GROUP BY article.ArticleTime DESC
+    SELECT ArticleTitle,ClickCount FROM article WHERE article.ArticleTime LIKE "2017%" GROUP BY article.ClickCount DESC limit 0,61
     </select>
-    <!--查找最近的文章，显示在右边简要显示-->
-    <select id="findNowArticle" resultMap="AACResultMap">
-SELECT article.ArticleTitle,author.AuthorName,article.ClickCount,article.easyContent,category.CategoryName FROM article,author,category WHERE article.ArticleTime LIKE "2017%" GROUP BY ClickCount DESC
+    <!--查找最近的文章，分页显示在右边简要显示-->
+    <select id="findNowArticle" parameterType="int" resultMap="AACResultMap">
+    SELECT
+      article.ArticleTitle,
+      author.AuthorName,
+      article.ClickCount,
+      article.easyContent,
+      category.CategoryName
+    FROM
+      article,
+      author,
+      category
+    WHERE
+      article.ArticleTime LIKE "2017%"
+    AND
+      article.AuthorId=author.AuthorId
+    GROUP BY
+      ArticleTime DESC
+    limit #{startpage},#{size}
   </select>
 
     <!--查找点击后的正文-->
@@ -61,5 +77,13 @@ SELECT article.ArticleTitle,author.AuthorName,article.ClickCount,article.easyCon
             article.AuthorId=author.AuthorId
         AND
             article.CategoryId=Category.CategoryId
+    </select>
+
+    <!--查询文章表的总记录数-->
+    <select id="findPageCount" resultType="int">
+        SELECT
+          COUNT(*)
+        FROM
+          article
     </select>
 </mapper>

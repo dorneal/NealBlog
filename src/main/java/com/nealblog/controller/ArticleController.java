@@ -2,6 +2,7 @@ package com.nealblog.controller;
 
 import com.nealblog.po.ArticleEx;
 import com.nealblog.po.ArticleVo;
+import com.nealblog.po.PageBean;
 import com.nealblog.service.ArticleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -35,13 +36,20 @@ public class ArticleController {
 
     /**
      * 查询显示右边简要文章
+     *
      * @param request
      * @return
      */
     @RequestMapping("/nowArticle")
-    public String nowArticle(HttpServletRequest request){
-        List<ArticleVo> nowArticleData = articleService.findNowArticle();
-        request.setAttribute("nowArticleData", nowArticleData);
+    public String nowArticle(HttpServletRequest request) {
+       String currentPage = request.getParameter("currentPage");
+        PageBean<ArticleVo> pageBean;
+       if (currentPage==null){
+           pageBean = articleService.findPageData(0);
+       }else{
+           pageBean = articleService.findPageData(Integer.valueOf(currentPage));
+       }
+        request.setAttribute("pageBean", pageBean);
         return "forward:/articleTitle.action";
     }
 
@@ -53,14 +61,7 @@ public class ArticleController {
         //获取所点击的文章标题
         String articleTitle = request.getParameter("ArticleTitle");
         ArticleVo articleData = articleService.findArticleContent(articleTitle);
-        request.setAttribute("articleData",articleData);
+        request.setAttribute("articleData", articleData);
         return "forward:/articleTitle.action";
     }
-
-
-    //返回个人文章页面
-//    @RequestMapping("/article")
-//    public String article() {
-//    return "main/article";
-//}
 }
