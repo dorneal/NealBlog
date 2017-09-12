@@ -36,7 +36,7 @@
 
     <!--查找所有文章标题，显示在目录树-->
     <select id="findArticleTitle" resultMap="StringResultMap">
-    SELECT ArticleTitle,ClickCount FROM article WHERE article.ArticleTime LIKE "2017%" GROUP BY article.ClickCount DESC limit 0,61
+    SELECT ArticleTitle,ClickCount FROM article WHERE article.ArticleTime LIKE "2017%" ORDER BY article.ClickCount DESC limit 0,61
     </select>
     <!--查找最近的文章，分页显示在右边简要显示-->
     <select id="findNowArticle" parameterType="int" resultMap="AACResultMap">
