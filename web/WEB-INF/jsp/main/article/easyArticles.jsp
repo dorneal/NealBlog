@@ -1,3 +1,4 @@
+<%@ page import="com.nealblog.po.ArticleVo" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" %>
 <div class="col-md-9">
@@ -44,7 +45,7 @@
         <%--如果点击的是显示正文，显示正文--%>
         <c:if test="${requestScope.articleData!=null}">
         <div class="page_header">
-            <h2 class="text-center">
+            <h2 class="text-center" style="font-family: 宋体;">
                     ${requestScope.articleData.article.articletitle}</h2>
             <div class="page_contents">
                 <div class="page_contents">
@@ -54,8 +55,12 @@
                             <span class="glyphicon glyphicon-tags"></span>&nbsp;&nbsp;${requestScope.articleData.category.categoryname}&nbsp;&nbsp;
                                 ${requestScope.articleData.article.clickcount} <span class="glyphicon glyphicon-eye-open"></span>
                         </p></div>
-                    <div>
-                            ${requestScope.articleData.article.articlecontent}
+                    <div style="font-family: 方正博雅宋;font-size: 1.2em;padding: 10px 10px 20px 10px;">
+                        <%
+                            ArticleVo contents = (ArticleVo) request.getAttribute("articleData");
+                            String content = contents.getArticle().getArticlecontent().replaceAll(" ","</br></br>&nbsp;&nbsp;&nbsp;&nbsp;");
+                        %>
+                            <%=content%>
                     </div>
                 </div>
             </div>

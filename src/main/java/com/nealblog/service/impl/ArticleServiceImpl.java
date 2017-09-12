@@ -59,4 +59,12 @@ public class ArticleServiceImpl implements ArticleService {
         pageBean.setLists(list);
         return pageBean;
     }
+
+    /**
+     * 更新文章点击数
+     * @param articleTitle 文章标题
+     */
+    public void updateArticleCount(String articleTitle) {
+        articleCostomMapper.updateArticleCount(articleTitle);
+    }
 }

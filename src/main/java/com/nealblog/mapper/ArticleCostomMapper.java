@@ -14,11 +14,14 @@ public interface ArticleCostomMapper {
     List<ArticleEx> findArticleTitle();
 
     //查找简要文章
-    List<ArticleVo> findNowArticle(@Param("startpage")int startpage,@Param("size")int size);
+    List<ArticleVo> findNowArticle(@Param("startpage") int startpage, @Param("size") int size);
 
     //根据链接所给的文章标题查找正文
     ArticleVo findArticleContent(String articleTitle);
 
     //查询总记录数
     int findPageCount();
+
+    //更新点击数
+    void updateArticleCount(String articleTitle);
 }

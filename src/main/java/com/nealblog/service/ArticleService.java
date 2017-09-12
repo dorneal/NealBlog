@@ -17,4 +17,7 @@ public interface ArticleService {
 
     //封装每页数据
     PageBean<ArticleVo> findPageData(int currentPage);
+
+    //更新文章点击数
+    void updateArticleCount(String articleTitle);
 }

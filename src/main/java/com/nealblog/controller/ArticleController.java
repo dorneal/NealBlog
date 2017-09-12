@@ -61,6 +61,8 @@ public class ArticleController {
         //获取所点击的文章标题
         String articleTitle = request.getParameter("ArticleTitle");
         ArticleVo articleData = articleService.findArticleContent(articleTitle);
+        //更新点击数
+        articleService.updateArticleCount(articleTitle);
         request.setAttribute("articleData", articleData);
         return "forward:/articleTitle.action";
     }

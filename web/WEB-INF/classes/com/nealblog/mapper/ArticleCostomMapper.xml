@@ -86,4 +86,7 @@
         FROM
           article
     </select>
+    <update id="updateArticleCount" parameterType="java.lang.String">
+        UPDATE article set ClickCount = ClickCount + 1 WHERE ArticleTitle=#{ArticleTitle}
+    </update>
 </mapper>
