@@ -55,10 +55,10 @@
                             <span class="glyphicon glyphicon-tags"></span>&nbsp;&nbsp;${requestScope.articleData.category.categoryname}&nbsp;&nbsp;
                                 ${requestScope.articleData.article.clickcount} <span class="glyphicon glyphicon-eye-open"></span>
                         </p></div>
-                    <div style="font-family: 方正博雅宋;font-size: 1.2em;padding: 10px 10px 20px 10px;">
+                    <div style="font-family: Simsun,serif;font-size: 1.2em;padding: 10px 10px 20px 10px;word-wrap: break-word;line-height: 130%;">
                         <%
                             ArticleVo contents = (ArticleVo) request.getAttribute("articleData");
-                            String content = contents.getArticle().getArticlecontent().replaceAll(" ","</br></br>&nbsp;&nbsp;&nbsp;&nbsp;");
+                            String content = contents.getArticle().getArticlecontent().replaceAll(" ","</br></br>&nbsp;&nbsp;");
                         %>
                             <%=content%>
                     </div>

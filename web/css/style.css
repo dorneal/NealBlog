@@ -119,3 +119,9 @@
 .icon-tux:before {
     content: "\eabd";
 }
+.icon-calendar:before {
+    content: "\e953";
+}
+.icon-location2:before {
+    content: "\e948";
+}

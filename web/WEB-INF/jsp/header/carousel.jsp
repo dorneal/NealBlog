@@ -1,5 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
-<div class="main" style="margin-top: 50px;margin-bottom: 100px;">
+<div class="main" style="margin-top: 50px;margin-bottom: 50px;">
     <div id="myCarousel" class="carousel slide">
         <!-- 轮播（Carousel）指标 -->
         <ol class="carousel-indicators">
@@ -12,23 +12,23 @@
         <!-- 轮播（Carousel）项目 -->
         <div class="carousel-inner">
             <div class="item active">
-                <img src="${pageContext.request.contextPath }/imgs/seven.jpg" style="width: 100%;max-height: 366px"
+                <img src="${pageContext.request.contextPath }/imgs/seven.jpg" style="width: 100%;max-height: 450px"
                      alt="First slide">
             </div>
             <div class="item">
-                <img src="${pageContext.request.contextPath }/imgs/eight.jpg" style="width: 100%;max-height: 366px"
+                <img src="${pageContext.request.contextPath }/imgs/eight.jpg" style="width: 100%;max-height: 450px"
                      alt="Second slide">
             </div>
             <div class="item">
-                <img src="${pageContext.request.contextPath }/imgs/four.jpg" style="width: 100%;max-height: 366px"
+                <img src="${pageContext.request.contextPath }/imgs/four.jpg" style="width: 100%;max-height: 450px"
                      alt="Third slide">
             </div>
             <div class="item">
-                <img src="${pageContext.request.contextPath }/imgs/five.jpg" style="width: 100%;max-height: 366px"
+                <img src="${pageContext.request.contextPath }/imgs/five.jpg" style="width: 100%;max-height: 450px"
                      alt="Third slide">
             </div>
             <div class="item">
-                <img src="${pageContext.request.contextPath }/imgs/six.jpg" style="width: 100%;max-height: 366px"
+                <img src="${pageContext.request.contextPath }/imgs/six.jpg" style="width: 100%;max-height: 450px"
                      alt="Third slide">
             </div>
         </div>
