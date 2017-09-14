@@ -24,4 +24,7 @@ public interface ArticleCostomMapper {
 
     //更新点击数
     void updateArticleCount(String articleTitle);
+
+    //个人文章页面站内搜索
+    List<ArticleVo> findBySearch(String articleTitle);
 }

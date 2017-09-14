@@ -42,13 +42,15 @@ public class ArticleController {
      */
     @RequestMapping("/nowArticle")
     public String nowArticle(HttpServletRequest request) {
-       String currentPage = request.getParameter("currentPage");
+        //获取当前网页页码
+        String currentPage = request.getParameter("currentPage");
         PageBean<ArticleVo> pageBean;
-       if (currentPage==null){
-           pageBean = articleService.findPageData(0);
-       }else{
-           pageBean = articleService.findPageData(Integer.valueOf(currentPage));
-       }
+        //判断是否为第一页（第一页取不到值，所以为空）
+        if (currentPage == null) {
+            pageBean = articleService.findPageData(0);
+        } else {
+            pageBean = articleService.findPageData(Integer.valueOf(currentPage));
+        }
         request.setAttribute("pageBean", pageBean);
         return "forward:/articleTitle.action";
     }
@@ -64,6 +66,25 @@ public class ArticleController {
         //更新点击数
         articleService.updateArticleCount(articleTitle);
         request.setAttribute("articleData", articleData);
+        return "forward:/articleTitle.action";
+    }
+
+    @RequestMapping("/articleSearch")
+    public String articleSearch(HttpServletRequest request) {
+        String articleTitle = request.getParameter("inputContent");
+        //如果输入框为空，则直接返回当前页面
+        if (articleTitle == null || "".equals(articleTitle)) {
+            return "forward:/nowArticle.action";
+        }
+        List<ArticleVo> searchResult = articleService.findBySearch(articleTitle);
+        //如果查询结果为空
+        if (searchResult == null || searchResult.size()==0) {
+            request.setAttribute("titleResult",articleTitle);
+            //判断变量
+            request.setAttribute("boolResult", "have");
+            return "forward:/articleTitle.action";
+        }
+        request.setAttribute("searchResult", searchResult);
         return "forward:/articleTitle.action";
     }
 }

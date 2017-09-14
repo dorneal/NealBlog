@@ -5,15 +5,15 @@ NealBlog
 IntelliJ IDEA 2017.2.1 x64
 JDK 1.8.0_144
 Tomcat 8.0
-PowrDesigner
+PowerDesigner
 PhotoShop CS5.1
 Mysql 5.5 
 Sublime text3(3126)
 使用的框架：bootstrap3.3.7、Spring4.0.3、SpringMVC、mybatis3.4.4
 
 需求：
-1.管理登录退出
-2.笔记模块的编写
+1.管理登录退出(已移除)
+2.笔记模块的编写（添加了个人文章，评论模块（友言），站内搜索）
 3.JAVAWEB的介绍，资源。
 
 页面设计：
@@ -48,4 +48,7 @@ http://120.24.247.104/NealBlog/
 增加文章点击后的点击数更新,页面路径导航功能的编写,将数据库取出的文本进行处理显示
 ，改写目录树的查询语句排序方法（GROUP BY不显示重复的点击数，当点击数同样时会只会保留一个，使用ORDER BY 排序则不会）。
 
-//TODO 站内搜索，评论模块。记得发布时，将8080端口的判断去掉。
+//TODO 站内搜索，。记得发布时，将8080端口的判断去掉，以及db.properties修改。评论模块
+
+2017/9/14
+完成简单站内搜索功能，将数据库源资料上传。

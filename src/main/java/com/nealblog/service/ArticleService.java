@@ -20,4 +20,7 @@ public interface ArticleService {
 
     //更新文章点击数
     void updateArticleCount(String articleTitle);
+
+    //处理文章搜索
+    List<ArticleVo> findBySearch(String articleTitle);
 }

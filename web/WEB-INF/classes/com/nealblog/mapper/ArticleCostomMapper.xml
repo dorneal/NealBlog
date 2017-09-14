@@ -86,7 +86,27 @@
         FROM
           article
     </select>
+
+    <!--更新点击数-->
     <update id="updateArticleCount" parameterType="java.lang.String">
         UPDATE article set ClickCount = ClickCount + 1 WHERE ArticleTitle=#{ArticleTitle}
     </update>
+
+    <!--处理站内搜索-->
+    <select id="findBySearch" parameterType="java.lang.String" resultMap="AACResultMap">
+    SELECT
+      article.ArticleTitle,
+      author.AuthorName,
+      article.ClickCount,
+      article.easyContent,
+      category.CategoryName
+    FROM
+      article LEFT JOIN author ON(article.AuthorId=author.AuthorId),category
+    WHERE
+      article.ArticleTitle LIKE CONCAT('%',#{articleTitle},'%')
+    GROUP BY
+     article.ArticleTitle
+    ORDER BY
+     article.ClickCount DESC;
+    </select>
 </mapper>

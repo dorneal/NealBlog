@@ -55,16 +55,27 @@ public class ArticleServiceImpl implements ArticleService {
         Double tc = Math.ceil(totalCount / pageSize);
         pageBean.setTotalPage(tc.intValue());
         //封装每页数据
-        List<ArticleVo> list = articleCostomMapper.findNowArticle((currentPage+1)*pageSize, pageSize);
+        List<ArticleVo> list = articleCostomMapper.findNowArticle((currentPage + 1) * pageSize, pageSize);
         pageBean.setLists(list);
         return pageBean;
     }
 
     /**
      * 更新文章点击数
+     *
      * @param articleTitle 文章标题
      */
     public void updateArticleCount(String articleTitle) {
         articleCostomMapper.updateArticleCount(articleTitle);
+    }
+
+    /**
+     * 搜索查询
+     *
+     * @param articleTitle
+     * @return
+     */
+    public List<ArticleVo> findBySearch(String articleTitle) {
+        return articleCostomMapper.findBySearch(articleTitle);
     }
 }
