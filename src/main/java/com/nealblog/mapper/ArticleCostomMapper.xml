@@ -68,15 +68,15 @@
             article.ArticleContent,
             article.ClickCount
         FROM
-            article,
-            author,
+            article
+        LEFT JOIN
+            author
+        ON(article.AuthorId=author.AuthorId)
+        LEFT JOIN
             category
+        ON(article.CategoryId=Category.CategoryId)
         WHERE
             article.ArticleTitle=#{ArticleTitle}
-        AND
-            article.AuthorId=author.AuthorId
-        AND
-            article.CategoryId=Category.CategoryId
     </select>
 
     <!--查询文章表的总记录数-->
