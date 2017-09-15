@@ -1,10 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <script type="text/javascript">
-    function authorLogin() {
-        document.login.action = "${pageContext.request.contextPath}/login.action";
-        document.login.submit();
-    }
     $(document).ready(function () {
         $("ul#nav").find("li").each(function () {
             var a = $(this).find("a:first")[0];
@@ -26,13 +22,13 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="${pageContext.request.contextPath}/home.action">NealBlog</a>
+            <a class="navbar-brand" href="${pageContext.request.contextPath}/home">NealBlog</a>
         </div>
         <div class="collapse navbar-collapse" id="example-navbar-collapse">
             <ul class="nav navbar-nav" id="nav">
-                <li class="active"><a href="${pageContext.request.contextPath}/home.action">首页</a></li>
+                <li class="active"><a href="${pageContext.request.contextPath}/home">首页</a></li>
                 <li>
-                    <a href="${pageContext.request.contextPath}/note.action">笔记</a>
+                    <a href="${pageContext.request.contextPath}/note">笔记</a>
                 </li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -49,14 +45,14 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="${pageContext.request.contextPath}/nowArticle.action">个人文章</a>
+                    <a href="${pageContext.request.contextPath}/nowArticle">个人文章</a>
                 </li>
                 <li>
-                    <a href="${pageContext.request.contextPath}/aboutMe.action">关于我</a>
+                    <a href="${pageContext.request.contextPath}/aboutMe">关于我</a>
 
                 </li>
                 <li>
-                    <a href="${pageContext.request.contextPath}/comment.action">给我留言</a>
+                    <a href="${pageContext.request.contextPath}/comment">给我留言</a>
                 </li>
             </ul>
             <%--暂时不需要登录模块--%>

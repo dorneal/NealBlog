@@ -10,7 +10,7 @@
         <div class="col-md-3" style="background-color: rgb(211, 211, 211);padding-top: 20px;padding-bottom: 20px;">
             <div class="">
                 <form name="searchArticle" method="post"
-                      action="${pageContext.request.contextPath}/articleSearch.action">
+                      action="${pageContext.request.contextPath}/articleSearch">
                     <label><input type="search" name="inputContent"></label>
                     <label><input type="submit" class="btn-default" value="搜索"></label>
                 </form>

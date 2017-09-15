@@ -9,7 +9,7 @@
                     &nbsp;&nbsp;&nbsp;&nbsp;多年来，云计算在技术趋势列表中总是占据主要地位。但随着绝大多数企业都开始使用云计算，该技术已经成为IT使用的主要技术而不是新兴趋势。对于2017年，下面是可能对IT专业人员带来影响的主要技术和趋势....
                 </div>
                 <p><a href="http://www.java800.com/peixun-70011823.html" charset="btn-default">Read More</a>
-                <p>来源：<span>Java800</span></p></p>
+                <p>来源：<span>Java800</span></p>
             </div>
         </div>
         <div class="page_header">
@@ -20,7 +20,7 @@
                     中的os.arch、os.version、 java.version等通过 System.getProperty() 进行调用得到的。
                 </div>
                 <p><a href="http://www.java800.com/peixun-2011135.html" charset="btn-default">Read More</a>
-                <p>来源：<span>:java800</span></p></p>
+                <p>来源：<span>:java800</span></p>
             </div>
         </div>
         <div class="page_header">
@@ -30,7 +30,7 @@
                     &nbsp;&nbsp;&nbsp;&nbsp;本文是ZeroTurnaround针对Java工具和技术的年度调查。通过问卷和数据分析，可以清晰地了解到目前Java社区在工具和技术上的使用情况.
                 </div>
                 <p><a href="" charset="btn-default">Read More</a>
-                <p>来源：<span>xxx</span></p></p>
+                <p>来源：<span>xxx</span></p>
             </div>
         </div>
         <div class="page_header">
@@ -40,7 +40,7 @@
                     &nbsp;&nbsp;&nbsp;&nbsp;一个程序员的受欢迎程度，要经过很多个维度的衡量，特整理了招聘人员、CTO、其他高层执行人员认为必须具备的技术，战略和软技能，找出今年最抢手的开发技能，供大家参考.
                 </div>
                 <p><a href="" charset="btn-default">Read More</a>
-                <p>来源：<span>xxx</span></p></p>
+                <p>来源：<span>xxx</span></p>
             </div>
         </div>
         <div class="page_header">
@@ -50,7 +50,7 @@
                     &nbsp;&nbsp;&nbsp;&nbsp;最流行的工具并不一定是“最好的”，对于开发来说，什么是最好的，取决于使用场景。然而，当选择工具时，流行程度是不可忽视的一个重要因素，并不是因为工具的流行增加了其价值，而是因为广泛使用的社区带来了无价的资源和支持。
                 </div>
                 <p><a href="" charset="btn-default">Read More</a>
-                <p>来源：<span>xxx</span></p></p>
+                <p>来源：<span>xxx</span></p>
             </div>
         </div>
         <div class="page_header">
@@ -62,7 +62,7 @@
                     Web开发占了一半以上，为57.9%，JavaME移动或嵌入式应用占15%，C/S应用占11.7%，系统编程占15.4%。近30%的开发者用Java从事C/S应用或系统级应用的开发。
                 </div>
                 <p><a href="" charset="btn-default">Read More</a>
-                <p>来源：<span>xxx</span></p></p>
+                <p>来源：<span>xxx</span></p>
             </div>
         </div>
         <div class="col-md-5"></div>

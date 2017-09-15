@@ -31,7 +31,7 @@ public class ArticleController {
     public String articleTitle(HttpServletRequest request) {
         List<ArticleEx> articleTitle = articleService.findArticleTitle();
         request.setAttribute("articleTitle", articleTitle);
-        return "main/article";
+        return "/main/article";
     }
 
     /**
@@ -52,7 +52,7 @@ public class ArticleController {
             pageBean = articleService.findPageData(Integer.valueOf(currentPage));
         }
         request.setAttribute("pageBean", pageBean);
-        return "forward:/articleTitle.action";
+        return "forward:/articleTitle";
     }
 
     /**
@@ -66,7 +66,7 @@ public class ArticleController {
         //更新点击数
         articleService.updateArticleCount(articleTitle);
         request.setAttribute("articleData", articleData);
-        return "forward:/articleTitle.action";
+        return "forward:/articleTitle";
     }
 
     @RequestMapping("/articleSearch")
@@ -74,17 +74,41 @@ public class ArticleController {
         String articleTitle = request.getParameter("inputContent");
         //如果输入框为空，则直接返回当前页面
         if (articleTitle == null || "".equals(articleTitle)) {
-            return "forward:/nowArticle.action";
+            return "forward:/nowArticle";
         }
         List<ArticleVo> searchResult = articleService.findBySearch(articleTitle);
         //如果查询结果为空
-        if (searchResult == null || searchResult.size()==0) {
-            request.setAttribute("titleResult",articleTitle);
+        if (searchResult == null || searchResult.size() == 0) {
+            request.setAttribute("titleResult", articleTitle);
             //判断变量
             request.setAttribute("boolResult", "have");
-            return "forward:/articleTitle.action";
+            return "forward:/articleTitle";
         }
         request.setAttribute("searchResult", searchResult);
-        return "forward:/articleTitle.action";
+        return "forward:/articleTitle";
+    }
+
+    //返回主页
+    @RequestMapping("/home")
+    public String home() {
+        return "/index";
+    }
+
+    //返回笔记页面
+    @RequestMapping("/note")
+    public String note() {
+        return "/main/note/note-catalog";
+    }
+
+    //返回关于我页面
+    @RequestMapping("/aboutMe")
+    public String aboutMe() {
+        return "/main/aboutMe";
+    }
+
+    //返回留言页面
+    @RequestMapping("/comment")
+    public String comment() {
+        return "/main/comment";
     }
 }
