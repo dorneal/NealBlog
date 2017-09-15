@@ -31,7 +31,7 @@ public class ArticleController {
     public String articleTitle(HttpServletRequest request) {
         List<ArticleEx> articleTitle = articleService.findArticleTitle();
         request.setAttribute("articleTitle", articleTitle);
-        return "/main/article";
+        return "main/article";
     }
 
     /**
@@ -91,24 +91,24 @@ public class ArticleController {
     //返回主页
     @RequestMapping("/home")
     public String home() {
-        return "/index";
+        return "index";
     }
 
     //返回笔记页面
     @RequestMapping("/note")
     public String note() {
-        return "/main/note/note-catalog";
+        return "main/note/note-catalog";
     }
 
     //返回关于我页面
     @RequestMapping("/aboutMe")
     public String aboutMe() {
-        return "/main/aboutMe";
+        return "main/aboutMe";
     }
 
     //返回留言页面
     @RequestMapping("/comment")
     public String comment() {
-        return "/main/comment";
+        return "main/comment";
     }
 }
