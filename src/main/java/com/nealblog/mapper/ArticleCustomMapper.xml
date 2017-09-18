@@ -161,7 +161,7 @@
         author ON(article.AuthorId=author.AuthorId)
         WHERE
         article.CategoryId=3
-        ORDER BY
+        GROUP BY
         ArticleTime DESC
         limit #{startpage},#{size}
 </select>
@@ -178,8 +178,13 @@
         author ON(article.AuthorId=author.AuthorId)
         WHERE
         article.CategoryId=2
-        ORDER BY
+        GROUP BY
         ArticleTime DESC
         limit #{startpage},#{size}
     </select>
+
+    <!--根据ID删除文章-->
+    <delete id="deleteArticleById" parameterType="int">
+        DELETE FROM article WHERE article.ArticleId=#{articleid};
+    </delete>
 </mapper>

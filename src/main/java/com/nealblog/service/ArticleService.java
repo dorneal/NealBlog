@@ -36,4 +36,7 @@ public interface ArticleService {
 
     //封装分页笔记数据，用于博主模块
     PageBean<ArticleVo> findByPageNote(int currentPage);
+
+    //根据ID删除文章
+    void deleteArticleById(int id);
 }

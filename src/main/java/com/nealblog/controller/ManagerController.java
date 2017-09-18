@@ -108,4 +108,28 @@ public class ManagerController {
         request.setAttribute("pageBeanByNote", pageBean);
         return "manager/notemanager";
     }
+
+    /**
+     * 根据ID删除文章
+     *
+     * @param articleid
+     * @return
+     */
+    @RequestMapping("/deleteArticle")
+    public String deleteArticle(int articleid) {
+        articleService.deleteArticleById(articleid);
+        return "redirect:/manager/managerByArticle";
+    }
+
+    /**
+     * 根据ID删除笔记
+     *
+     * @param articleid
+     * @return 返回到笔记页面
+     */
+    @RequestMapping("/deleteNote")
+    public String deleteNote(int articleid) {
+        articleService.deleteArticleById(articleid);
+        return "redirect:/manager/managerByNote";
+    }
 }

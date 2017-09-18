@@ -42,4 +42,7 @@ public interface ArticleCustomMapper {
 
     //用于博主，分页显示笔记
     List<ArticleVo> findNowNotes(@Param("startpage") int startpage, @Param("size") int size);
+
+    //根据id删除文章
+    void deleteArticleById(int id);
 }

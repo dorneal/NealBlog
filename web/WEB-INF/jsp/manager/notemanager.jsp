@@ -72,7 +72,9 @@
                         <td>${la.article.articletitle}</td>
                         <td>${la.article.articletime}</td>
                         <td>${la.article.clickcount}</td>
-                        <td><a href="">更新</a> <a href="">删除</a></td>
+                        <td><a href="">更新</a> <a
+                                href="${pageContext.request.contextPath}/manager/deleteNote?articleid=${la.article.articleid}">删除</a>
+                        </td>
                     </tr>
                 </c:forEach>
                 </tbody>
