@@ -1,16 +1,32 @@
 package com.nealblog.service.impl;
 
-import com.nealblog.mapper.AuthorMapper;
-import com.nealblog.po.AuthorEx;
-import com.nealblog.po.AuthorVo;
+import com.nealblog.mapper.AuthorCustomMapper;
+import com.nealblog.po.Author;
 import com.nealblog.service.AuthorService;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.List;
+
 public class AuthorServiceImpl implements AuthorService {
     @Autowired
-    private AuthorMapper authorMapper;
+    private AuthorCustomMapper authorCustomMapper;
 
-    public AuthorEx login(AuthorVo authorVo) {
-        return authorMapper.selectByAuthorEx(authorVo);
+    /**
+     * 处理登录
+     *
+     * @param author
+     * @return
+     */
+    public Author login(Author author) {
+        return authorCustomMapper.findByAuthor(author);
+    }
+
+    /**
+     * 查询所有的作者记录
+     *
+     * @return
+     */
+    public List<Author> findListAuthor() {
+        return authorCustomMapper.findListAuthor();
     }
 }

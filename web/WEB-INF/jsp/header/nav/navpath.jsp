@@ -5,22 +5,22 @@
     <%
         String url;
         String currentPageName;
-        System.out.println(request.getRequestURI());
+        String path = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+request.getContextPath();
         switch (request.getRequestURI()){
             case "/NealBlog/WEB-INF/jsp/main/note/note-catalog.jsp":
-                url = "http://localhost/NealBlog/note";
+                url = path+"/note";
                 currentPageName = "笔记";
                 break;
             case "/NealBlog/WEB-INF/jsp/main/article.jsp":
-                url = "http://localhost/NealBlog/nowArticle";
+                url = path+"/nowArticle";
                 currentPageName = "个人文章";
                 break;
             case "/NealBlog/WEB-INF/jsp/main/aboutMe.jsp":
-                url = "http://localhost/NealBlog/aboutMe";
+                url = path+"/aboutMe";
                 currentPageName = "关于我";
                 break;
             case "/NealBlog/WEB-INF/jsp/main/comment.jsp":
-                url = "http://localhost/NealBlog/comment";
+                url = path+"/comment";
                 currentPageName = "给我留言";
                 break;
             default:
@@ -30,7 +30,7 @@
         }
         request.setAttribute("currentPageName",currentPageName);
     %>
-    <li><a href="http://localhost/NealBlog/home">Home</a></li>
+    <li><a href="<%=path%>/home">Home</a></li>
     <c:if test="${requestScope.currentPageName!=null}">
         <li><a href="<%= url %>"><%= currentPageName %></a></li>
     </c:if>

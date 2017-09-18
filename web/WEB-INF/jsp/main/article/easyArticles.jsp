@@ -26,17 +26,17 @@
             <div class="col-md-5"></div>
             <div class="col-md-7">
                 <ul class="pagination">
-                    <c:if test="${requestScope.pageBean.currPage==0}">
+                    <c:if test="${requestScope.pageBean.currPage==1}">
                         <li class="disabled"><a>&laquo;</a></li>
                     </c:if>
-                    <c:if test="${requestScope.pageBean.currPage!=0}">
+                    <c:if test="${requestScope.pageBean.currPage!=1}">
                         <li><a href="${pageContext.request.contextPath}/nowArticle?currentPage=${requestScope.pageBean.currPage-1}">&laquo;</a></li>
                     </c:if>
-                    <li class="active"><a name="currentPage">第${requestScope.pageBean.currPage+1}页</a></li>
-                    <c:if test="${requestScope.pageBean.currPage>=requestScope.pageBean.totalPage}">
+                    <li class="active"><a name="currentPage">第${requestScope.pageBean.currPage}页</a></li>
+                    <c:if test="${requestScope.pageBean.currPage>requestScope.pageBean.totalPage}">
                         <li class="disabled"><a>&raquo;</a></li>
                     </c:if>
-                    <c:if test="${requestScope.pageBean.currPage!=requestScope.pageBean.totalPage}">
+                    <c:if test="${requestScope.pageBean.currPage<=requestScope.pageBean.totalPage}">
                         <li><a href="${pageContext.request.contextPath}/nowArticle?currentPage=${requestScope.pageBean.currPage+1}">&raquo;</a></li>
                     </c:if>
                 </ul>

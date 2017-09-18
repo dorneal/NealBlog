@@ -8,4 +8,6 @@
     <bean id="authorService" class="com.nealblog.service.impl.AuthorServiceImpl"/>
     <!--文章service-->
     <bean id="articleService" class="com.nealblog.service.impl.ArticleServiceImpl"/>
+    <!--类别Service-->
+    <bean id="categoryService" class="com.nealblog.service.impl.CategoryServiceImpl"/>
 </beans>

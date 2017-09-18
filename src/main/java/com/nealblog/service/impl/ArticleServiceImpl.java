@@ -1,14 +1,12 @@
 package com.nealblog.service.impl;
 
-import com.nealblog.mapper.ArticleCostomMapper;
-import com.nealblog.po.Article;
+import com.nealblog.mapper.ArticleCustomMapper;
 import com.nealblog.po.ArticleEx;
 import com.nealblog.po.ArticleVo;
 import com.nealblog.po.PageBean;
 import com.nealblog.service.ArticleService;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -16,7 +14,7 @@ import java.util.List;
  */
 public class ArticleServiceImpl implements ArticleService {
     @Autowired
-    private ArticleCostomMapper articleCostomMapper;
+    private ArticleCustomMapper articleCustomMapper;
 
     /**
      * 查找文章标题，用于显示在页面目录树
@@ -24,7 +22,7 @@ public class ArticleServiceImpl implements ArticleService {
      * @return
      */
     public List<ArticleEx> findArticleTitle() {
-        return articleCostomMapper.findArticleTitle();
+        return articleCustomMapper.findArticleTitle();
     }
 
     /**
@@ -33,7 +31,7 @@ public class ArticleServiceImpl implements ArticleService {
      * @return
      */
     public ArticleVo findArticleContent(String articleTitle) {
-        return articleCostomMapper.findArticleContent(articleTitle);
+        return articleCustomMapper.findArticleContent(articleTitle);
     }
 
     /**
@@ -49,13 +47,88 @@ public class ArticleServiceImpl implements ArticleService {
         int pageSize = 10;
         pageBean.setPageSize(pageSize);
         //封装总记录数
-        int totalCount = articleCostomMapper.findPageCount();
+        int totalCount = articleCustomMapper.findPageCountByArticle();
         pageBean.setTotalCount(totalCount);
         //封装总页数
         Double tc = Math.ceil(totalCount / pageSize);
         pageBean.setTotalPage(tc.intValue());
         //封装每页数据
-        List<ArticleVo> list = articleCostomMapper.findNowArticle((currentPage + 1) * pageSize, pageSize);
+        List<ArticleVo> list = articleCustomMapper.findNowArticle((currentPage - 1) * pageSize, pageSize);
+        pageBean.setLists(list);
+        return pageBean;
+    }
+
+    /**
+     * 笔记分页,显示在笔记模块右侧
+     *
+     * @param currentPage
+     * @return
+     */
+    public PageBean<ArticleVo> findPageNote(int currentPage) {
+        PageBean<ArticleVo> pageBean = new PageBean<ArticleVo>();
+        //封装当前页
+        pageBean.setCurrPage(currentPage);
+        //封装页面大小
+        int pageSize = 10;
+        pageBean.setPageSize(pageSize);
+        //封装总记录数
+        int totalCount = articleCustomMapper.findPageCountByNote();
+        pageBean.setTotalCount(totalCount);
+        //封装总页数
+        Double tc = Math.ceil(totalCount / pageSize);
+        pageBean.setTotalPage(tc.intValue());
+        //封装每页数据
+        List<ArticleVo> list = articleCustomMapper.findNowNote((currentPage - 1) * pageSize, pageSize);
+        pageBean.setLists(list);
+        return pageBean;
+    }
+
+    /**
+     * 文章分页，显示在博主模块
+     *
+     * @param currentPage
+     * @return
+     */
+    public PageBean<ArticleVo> findByPageArticle(int currentPage) {
+        PageBean<ArticleVo> pageBean = new PageBean<ArticleVo>();
+        //封装当前页
+        pageBean.setCurrPage(currentPage);
+        //封装页面大小
+        int pageSize = 20;
+        pageBean.setPageSize(pageSize);
+        //封装总记录数
+        int totalCount = articleCustomMapper.findPageCountByArticle();
+        pageBean.setTotalCount(totalCount);
+        //封装总页数
+        Double tc = Math.ceil(totalCount / pageSize);
+        pageBean.setTotalPage(tc.intValue());
+        //封装每页数据
+        List<ArticleVo> list = articleCustomMapper.findNowArticles((currentPage - 1) * pageSize, pageSize);
+        pageBean.setLists(list);
+        return pageBean;
+    }
+
+    /**
+     * 笔记分页,显示在博主模块
+     *
+     * @param currentPage
+     * @return
+     */
+    public PageBean<ArticleVo> findByPageNote(int currentPage) {
+        PageBean<ArticleVo> pageBean = new PageBean<ArticleVo>();
+        //封装当前页
+        pageBean.setCurrPage(currentPage);
+        //封装页面大小
+        int pageSize = 10;
+        pageBean.setPageSize(pageSize);
+        //封装总记录数
+        int totalCount = articleCustomMapper.findPageCountByNote();
+        pageBean.setTotalCount(totalCount);
+        //封装总页数
+        Double tc = Math.ceil(totalCount / pageSize);
+        pageBean.setTotalPage(tc.intValue());
+        //封装每页数据
+        List<ArticleVo> list = articleCustomMapper.findNowNotes((currentPage - 1) * pageSize, pageSize);
         pageBean.setLists(list);
         return pageBean;
     }
@@ -66,7 +139,7 @@ public class ArticleServiceImpl implements ArticleService {
      * @param articleTitle 文章标题
      */
     public void updateArticleCount(String articleTitle) {
-        articleCostomMapper.updateArticleCount(articleTitle);
+        articleCustomMapper.updateArticleCount(articleTitle);
     }
 
     /**
@@ -76,6 +149,15 @@ public class ArticleServiceImpl implements ArticleService {
      * @return
      */
     public List<ArticleVo> findBySearch(String articleTitle) {
-        return articleCostomMapper.findBySearch(articleTitle);
+        return articleCustomMapper.findBySearch(articleTitle);
+    }
+
+    /**
+     * 查找最近的10条文章记录
+     *
+     * @return
+     */
+    public List<ArticleEx> findListArticle() {
+        return articleCustomMapper.findListArticle();
     }
 }

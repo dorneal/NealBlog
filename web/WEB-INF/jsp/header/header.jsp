@@ -28,7 +28,7 @@
             <ul class="nav navbar-nav" id="nav">
                 <li class="active"><a href="${pageContext.request.contextPath}/home">首页</a></li>
                 <li>
-                    <a href="${pageContext.request.contextPath}/note">笔记</a>
+                    <a href="${pageContext.request.contextPath}/nowNote">笔记</a>
                 </li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">

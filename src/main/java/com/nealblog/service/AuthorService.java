@@ -1,8 +1,20 @@
 package com.nealblog.service;
 
+import com.nealblog.po.Author;
 import com.nealblog.po.AuthorEx;
 import com.nealblog.po.AuthorVo;
 
+import java.util.List;
+
+/**
+ * 作者业务逻辑接口
+ *
+ * @author Neal
+ */
 public interface AuthorService {
-    AuthorEx login(AuthorVo authorVo);
+    //博主登录
+    Author login(Author author);
+
+    //查询所有作者
+    List<Author> findListAuthor();
 }

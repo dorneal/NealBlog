@@ -35,7 +35,7 @@ public class ArticleController {
     }
 
     /**
-     * 查询显示右边简要文章
+     * 查询显示右边简要文章，分页显示
      *
      * @param request
      * @return
@@ -47,12 +47,27 @@ public class ArticleController {
         PageBean<ArticleVo> pageBean;
         //判断是否为第一页（第一页取不到值，所以为空）
         if (currentPage == null) {
-            pageBean = articleService.findPageData(0);
+            pageBean = articleService.findPageData(1);
         } else {
             pageBean = articleService.findPageData(Integer.valueOf(currentPage));
         }
         request.setAttribute("pageBean", pageBean);
         return "forward:/articleTitle";
+    }
+
+    @RequestMapping("/nowNote")
+    public String nowNote(HttpServletRequest request) {
+        //获取当前网页页码
+        String currentPage = request.getParameter("currentPage");
+        PageBean<ArticleVo> pageBean;
+        //判断是否为第一页（第一页取不到值，所以为空）
+        if (currentPage == null) {
+            pageBean = articleService.findPageNote(1);
+        } else {
+            pageBean = articleService.findPageNote(Integer.valueOf(currentPage));
+        }
+        request.setAttribute("pageBean", pageBean);
+        return "forward:/note";
     }
 
     /**
@@ -69,6 +84,12 @@ public class ArticleController {
         return "forward:/articleTitle";
     }
 
+    /**
+     * 站内搜索
+     *
+     * @param request
+     * @return
+     */
     @RequestMapping("/articleSearch")
     public String articleSearch(HttpServletRequest request) {
         String articleTitle = request.getParameter("inputContent");
