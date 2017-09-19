@@ -132,4 +132,50 @@ public class ManagerController {
         articleService.deleteArticleById(articleid);
         return "redirect:/manager/managerByNote";
     }
+
+    /**
+     * 跳转到文章发布页面
+     * 1.先查询作者用于显示下拉列表
+     * 2.查询类别用于显示下拉列表
+     *
+     * @return
+     */
+    @RequestMapping("/articlePublish")
+    public String articlePublish(HttpServletRequest request) {
+        List<Category> listByCategory = findListCategory();
+        List<Author> listByAuthor = findListAuthor();
+        request.setAttribute("listByCategory", listByCategory);
+        request.setAttribute("listByAuthor", listByAuthor);
+        return "manager/articlepublish";
+    }
+
+    /**
+     * 跳转到文章发布页面
+     * 1.先查询作者用于显示下拉列表
+     * 2.查询类别用于显示下拉列表
+     *
+     * @return
+     */
+    @RequestMapping("/notePublish")
+    public String notePublish(HttpServletRequest request) {
+        List<Category> listByCategory = findListCategory();
+        List<Author> listByAuthor = findListAuthor();
+        request.setAttribute("listByCategory", listByCategory);
+        request.setAttribute("listByAuthor", listByAuthor);
+        return "manager/notepublish";
+    }
+
+    /**
+     * 根据ID查询
+     *
+     * @param request
+     * @param articleid
+     * @return
+     */
+    @RequestMapping("/findByArticleId")
+    public String findByArticleId(HttpServletRequest request, int articleid) {
+        ArticleVo articleVoList = articleService.findByArticleId(articleid);
+        request.setAttribute("articleVoList", articleVoList);
+        return "manager/editarticle";
+    }
 }

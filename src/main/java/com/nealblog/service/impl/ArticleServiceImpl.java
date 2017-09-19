@@ -143,6 +143,16 @@ public class ArticleServiceImpl implements ArticleService {
     }
 
     /**
+     * 根据ID查找文章
+     *
+     * @param id
+     * @return
+     */
+    public ArticleVo findByArticleId(int id) {
+        return articleCustomMapper.findByArticleId(id);
+    }
+
+    /**
      * 更新文章点击数
      *
      * @param articleTitle 文章标题

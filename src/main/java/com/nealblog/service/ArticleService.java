@@ -39,4 +39,7 @@ public interface ArticleService {
 
     //根据ID删除文章
     void deleteArticleById(int id);
+
+    //用于博主点击更新查询
+    ArticleVo findByArticleId(int id);
 }

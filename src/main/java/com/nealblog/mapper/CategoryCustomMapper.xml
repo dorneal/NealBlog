@@ -3,6 +3,6 @@
 <mapper namespace="com.nealblog.mapper.CategoryCustomMapper">
     <!--类别查询-->
     <select id="findListCategory" resultType="category">
-  select CategoryName from category
+  select CategoryId,CategoryName from category
   </select>
 </mapper>

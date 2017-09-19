@@ -187,4 +187,27 @@
     <delete id="deleteArticleById" parameterType="int">
         DELETE FROM article WHERE article.ArticleId=#{articleid};
     </delete>
-</mapper>
+
+    <!--用于博主，更新文章-->
+    <select id="findByArticleId" parameterType="int" resultMap="AACResultMap">
+        SELECT
+        category.CategoryName,
+        category.CategoryId,
+        author.AuthorId,
+        author.AuthorName,
+        article.ArticleTime,
+        article.ArticleTitle,
+        article.easyContent,
+        article.ArticleContent
+        FROM
+        article
+        LEFT JOIN
+        author
+        ON(article.AuthorId=author.AuthorId)
+        LEFT JOIN
+        category
+        ON(article.CategoryId=category.CategoryId)
+        WHERE
+        article.ArticleId=#{articleid}
+        </select>
+        </mapper>
