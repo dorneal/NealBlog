@@ -13,51 +13,96 @@
             </h3>
         </div>
         <div class="panel-body">
-            <table class="table table-condensed">
-                <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>文章名称</th>
-                    <th>日期</th>
-                    <th>点击数</th>
-                    <th>操作</th>
-                </tr>
-                </thead>
-                <tbody>
-                <c:forEach items="${requestScope.pageBeanByNote.lists}" var="la">
+            <c:if test="${requestScope.articleVos==null}">
+                <table class="table table-condensed">
+                    <caption>
+                        <form action="${pageContext.request.contextPath}/manager/findByNoteSearch" method="post">
+                            <input type="search" name="articletitle" maxlength="50">
+                            <button type="submit">搜索</button>
+                        </form>
+                    </caption>
+                    <thead>
                     <tr>
-                        <td>${la.article.articleid}</td>
-                        <td>${la.article.articletitle}</td>
-                        <td>${la.article.articletime}</td>
-                        <td>${la.article.clickcount}</td>
-                        <td>
-                            <a href="${pageContext.request.contextPath}/manager/findByArticleId?articleid=${la.article.articleid}">更新</a>
-                            <a
-                                    href="${pageContext.request.contextPath}/manager/deleteNote?articleid=${la.article.articleid}">删除</a>
-                        </td>
+                        <th>ID</th>
+                        <th>文章名称</th>
+                        <th>日期</th>
+                        <th>点击数</th>
+                        <th>操作</th>
                     </tr>
-                </c:forEach>
-                </tbody>
-            </table>
-            <ul class="pagination">
-                <c:if test="${requestScope.pageBeanByNote.currPage==1}">
-                    <li class="disabled"><a>&laquo;</a></li>
-                </c:if>
-                <c:if test="${requestScope.pageBeanByNote.currPage!=1}">
+                    </thead>
+                    <tbody>
+                    <c:forEach items="${requestScope.pageBeanByNote.lists}" var="la">
+                        <tr>
+                            <td>${la.article.articleid}</td>
+                            <td>${la.article.articletitle}</td>
+                            <td>${la.article.articletime}</td>
+                            <td>${la.article.clickcount}</td>
+                            <td>
+                                <a href="${pageContext.request.contextPath}/manager/findByArticleId?articleid=${la.article.articleid}">更新</a>
+                                <a
+                                        href="${pageContext.request.contextPath}/manager/deleteNote?articleid=${la.article.articleid}">删除</a>
+                            </td>
+                        </tr>
+                    </c:forEach>
+                    </tbody>
+                </table>
+                <ul class="pagination">
+                    <c:if test="${requestScope.pageBeanByNote.currPage==1}">
+                        <li class="disabled"><a>&laquo;</a></li>
+                    </c:if>
+                    <c:if test="${requestScope.pageBeanByNote.currPage!=1}">
+                        <li>
+                            <a href="${pageContext.request.contextPath}/manager/managerByNote?currentPage=${requestScope.pageBeanByNote.currPage-1}">&laquo;</a>
+                        </li>
+                    </c:if>
+                    <li class="active"><a name="currentPage">第${requestScope.pageBeanByNote.currPage}页</a></li>
+                    <c:if test="${requestScope.pageBeanByNote.currPage>requestScope.pageBeanByNote.totalPage}">
+                        <li class="disabled"><a>&raquo;</a></li>
+                    </c:if>
+                    <c:if test="${requestScope.pageBeanByNote.currPage<=requestScope.pageBeanByNote.totalPage}">
+                        <li>
+                            <a href="${pageContext.request.contextPath}/manager/managerByNote?currentPage=${requestScope.pageBeanByNote.currPage+1}">&raquo;</a>
+                        </li>
+                    </c:if>
                     <li>
-                        <a href="${pageContext.request.contextPath}/manager/managerByNote?currentPage=${requestScope.pageBeanByNote.currPage-1}">&laquo;</a>
+                        &nbsp;
+                        <select class="form-control" name="currentPage" style="width: 70px;display: inline;"
+                                onchange="location.href=this.value;">
+                            <c:forEach var="lba" begin="1" end="${requestScope.pageBeanByArticle.totalPage+1}" step="1">
+                                <option value="${pageContext.request.contextPath}/manager/managerByNote?currentPage=${lba}">${lba}</option>
+                            </c:forEach>
+                        </select>
                     </li>
-                </c:if>
-                <li class="active"><a name="currentPage">第${requestScope.pageBeanByNote.currPage}页</a></li>
-                <c:if test="${requestScope.pageBeanByNote.currPage>requestScope.pageBeanByNote.totalPage}">
-                    <li class="disabled"><a>&raquo;</a></li>
-                </c:if>
-                <c:if test="${requestScope.pageBeanByNote.currPage<=requestScope.pageBeanByNote.totalPage}">
-                    <li>
-                        <a href="${pageContext.request.contextPath}/manager/managerByNote?currentPage=${requestScope.pageBeanByNote.currPage+1}">&raquo;</a>
-                    </li>
-                </c:if>
-            </ul>
+                </ul>
+            </c:if>
+            <c:if test="${requestScope.articleVos!=null}">
+                <table class="table table-condensed">
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>文章名称</th>
+                        <th>日期</th>
+                        <th>点击数</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <c:forEach items="${requestScope.articleVos}" var="la">
+                        <tr>
+                            <td>${la.article.articleid}</td>
+                            <td>${la.article.articletitle}</td>
+                            <td>${la.article.articletime}</td>
+                            <td>${la.article.clickcount}</td>
+                            <td>
+                                <a href="${pageContext.request.contextPath}/manager/findByArticleId?articleid=${la.article.articleid}">更新</a>
+                                <a
+                                        href="${pageContext.request.contextPath}/manager/deleteNote?articleid=${la.article.articleid}">删除</a>
+                            </td>
+                        </tr>
+                    </c:forEach>
+                    </tbody>
+                </table>
+            </c:if>
         </div>
     </div>
 </div>

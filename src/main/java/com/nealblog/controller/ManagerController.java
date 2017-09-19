@@ -178,4 +178,32 @@ public class ManagerController {
         request.setAttribute("articleVoList", articleVoList);
         return "manager/editarticle";
     }
+
+    /**
+     * 用于处理后台搜索处理(文章)
+     *
+     * @param request
+     * @param articletitle
+     * @return
+     */
+    @RequestMapping("/findByArticleSearch")
+    public String findByArticleSearch(HttpServletRequest request, String articletitle) {
+        List<ArticleVo> articleVos = articleService.findByArticleTitleSearch(articletitle);
+        request.setAttribute("articleVos", articleVos);
+        return "manager/articlemanager";
+    }
+
+    /**
+     * 用于处理后台搜索处理(笔记)
+     *
+     * @param request
+     * @param articletitle
+     * @return
+     */
+    @RequestMapping("/findByNoteSearch")
+    public String findByNoteSearch(HttpServletRequest request, String articletitle) {
+        List<ArticleVo> articleVos = articleService.findByNoteTitleSearch(articletitle);
+        request.setAttribute("articleVos", articleVos);
+        return "manager/notemanager";
+    }
 }

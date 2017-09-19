@@ -23,13 +23,14 @@
                     </div>
                 </div>
             </c:forEach>
-            <div class="col-md-5"></div>
-            <div class="col-md-7">
+            <div class="col-md-4"></div>
+            <div class="col-md-8">
                 <ul class="pagination">
                     <c:if test="${requestScope.pageBean.currPage==1}">
                         <li class="disabled"><a>&laquo;</a></li>
                     </c:if>
                     <c:if test="${requestScope.pageBean.currPage!=1}">
+                        <li><a href="${pageContext.request.contextPath}/nowNote?currentPage=1">首页</a></li>
                         <li>
                             <a href="${pageContext.request.contextPath}/nowNote?currentPage=${requestScope.pageBean.currPage-1}">&laquo;</a>
                         </li>
@@ -42,7 +43,16 @@
                         <li>
                             <a href="${pageContext.request.contextPath}/nowNote?currentPage=${requestScope.pageBean.currPage+1}">&raquo;</a>
                         </li>
+                        <li><a href="${pageContext.request.contextPath}/nowNote?currentPage=${requestScope.pageBean.totalPage}">尾页</a></li>
                     </c:if>
+                    <li>
+                        &nbsp;
+                        <select class="form-control" name="currentPage" style="width: 70px;display: inline" onchange="location.href=this.value;">
+                            <c:forEach var="lba" begin="1" end="${requestScope.pageBean.totalPage+1}" step="1">
+                                <option value="${pageContext.request.contextPath}/nowNote?currentPage=${lba}">${lba}</option>
+                            </c:forEach>
+                        </select>
+                    </li>
                 </ul>
             </div>
         </c:if>

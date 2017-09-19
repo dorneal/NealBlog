@@ -42,4 +42,10 @@ public interface ArticleService {
 
     //用于博主点击更新查询
     ArticleVo findByArticleId(int id);
+
+    //用于博主点击搜索
+    List<ArticleVo> findByArticleTitleSearch(String articletitle);
+
+    //用于博主点击搜索（笔记）
+    List<ArticleVo> findByNoteTitleSearch(String articletitle);
 }

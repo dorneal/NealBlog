@@ -41,7 +41,7 @@
 
     <!--查找所有文章标题，显示在目录树-->
     <select id="findArticleTitle" resultMap="StringResultMap">
-    SELECT ArticleTitle,ClickCount FROM article WHERE article.ArticleTime LIKE "2017%" ORDER BY article.ClickCount DESC limit 0,61
+    SELECT ArticleTitle,ClickCount FROM article WHERE article.ArticleTime LIKE "2017%" ORDER BY article.ClickCount DESC limit 0,50
     </select>
     <!--查找最近的文章，分页显示在右边简要显示-->
     <select id="findNowArticle" parameterType="int" resultMap="AACResultMap">
@@ -58,6 +58,8 @@
     WHERE
       article.CategoryId=3
     GROUP BY
+      article.ArticleId
+    ORDER BY
       ArticleTime DESC
     limit #{startpage},#{size}
   </select>
@@ -84,21 +86,11 @@
 
     <!--查询文章表中文章总记录数-->
     <select id="findPageCountByArticle" resultType="int">
-        SELECT
-          COUNT(*)
-        FROM
-          article
-        WHERE
-          article.CategoryId=3
+        SELECT COUNT(*) FROM article WHERE article.CategoryId=3
     </select>
     <!--查询文章表中笔记记录数-->
     <select id="findPageCountByNote" resultType="int">
-        SELECT
-          COUNT(*)
-          FROM
-          article
-          WHERE
-          article.CategoryId=2
+        SELECT COUNT(*) FROM article WHERE article.CategoryId=2
     </select>
 
     <!--更新点击数-->
@@ -126,7 +118,7 @@
 
     <!--查询最新的10条文章记录-->
     <select id="findListArticle" resultType="articleex">
-        select ArticleId,ArticleTitle,ArticleTime,ClickCount FROM article GROUP BY ArticleTime DESC limit 0,10
+        select ArticleId,ArticleTitle,ArticleTime,ClickCount FROM article ORDER BY ArticleTime DESC limit 0,10
     </select>
 
     <!--文章管理-->
@@ -145,6 +137,8 @@
     WHERE
     article.CategoryId=2
     GROUP BY
+    article.ArticleId
+    ORDER BY
     ArticleTime DESC
     limit #{startpage},#{size}
 </select>
@@ -157,11 +151,10 @@
         article.ArticleTime,
         article.ClickCount
         FROM
-        article LEFT JOIN
-        author ON(article.AuthorId=author.AuthorId)
+        article
         WHERE
         article.CategoryId=3
-        GROUP BY
+        ORDER BY
         ArticleTime DESC
         limit #{startpage},#{size}
 </select>
@@ -174,11 +167,10 @@
         article.ArticleTime,
         article.ClickCount
         FROM
-        article LEFT JOIN
-        author ON(article.AuthorId=author.AuthorId)
+        article
         WHERE
         article.CategoryId=2
-        GROUP BY
+        ORDER BY
         ArticleTime DESC
         limit #{startpage},#{size}
     </select>
@@ -210,4 +202,36 @@
         WHERE
         article.ArticleId=#{articleid}
         </select>
-        </mapper>
+    <!--后台搜索查询-->
+    <select id="findByArticleTitleSearch" parameterType="java.lang.String" resultMap="AACResultMap">
+    SELECT
+    article.ArticleId,
+    article.ArticleTitle,
+    article.ArticleTime,
+    article.ClickCount
+    FROM
+    article
+    WHERE
+    article.CategoryId=3
+    AND
+    article.ArticleTitle LIKE CONCAT('%',#{articleTitle},'%')
+    ORDER BY
+    ArticleTime DESC
+</select>
+
+    <select id="findByNoteTitleSearch" parameterType="java.lang.String" resultMap="AACResultMap">
+        SELECT
+        article.ArticleId,
+        article.ArticleTitle,
+        article.ArticleTime,
+        article.ClickCount
+        FROM
+        article
+        WHERE
+        article.CategoryId=2
+        AND
+        article.ArticleTitle LIKE CONCAT('%',#{articleTitle},'%')
+        ORDER BY
+        ArticleTime DESC
+    </select>
+</mapper>

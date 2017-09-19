@@ -119,7 +119,7 @@ public class ArticleServiceImpl implements ArticleService {
         //封装当前页
         pageBean.setCurrPage(currentPage);
         //封装页面大小
-        int pageSize = 10;
+        int pageSize = 20;
         pageBean.setPageSize(pageSize);
         //封装总记录数
         int totalCount = articleCustomMapper.findPageCountByNote();
@@ -150,6 +150,26 @@ public class ArticleServiceImpl implements ArticleService {
      */
     public ArticleVo findByArticleId(int id) {
         return articleCustomMapper.findByArticleId(id);
+    }
+
+    /**
+     * 博主后台搜索文章
+     *
+     * @param articletitle
+     * @return
+     */
+    public List<ArticleVo> findByArticleTitleSearch(String articletitle) {
+        return articleCustomMapper.findByArticleTitleSearch(articletitle);
+    }
+
+    /**
+     * 博主后台搜索笔记
+     *
+     * @param articletitle
+     * @return
+     */
+    public List<ArticleVo> findByNoteTitleSearch(String articletitle) {
+        return articleCustomMapper.findByNoteTitleSearch(articletitle);
     }
 
     /**
