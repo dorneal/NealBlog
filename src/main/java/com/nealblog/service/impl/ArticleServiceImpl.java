@@ -1,6 +1,7 @@
 package com.nealblog.service.impl;
 
 import com.nealblog.mapper.ArticleCustomMapper;
+import com.nealblog.po.Article;
 import com.nealblog.po.ArticleEx;
 import com.nealblog.po.ArticleVo;
 import com.nealblog.po.PageBean;
@@ -170,6 +171,43 @@ public class ArticleServiceImpl implements ArticleService {
      */
     public List<ArticleVo> findByNoteTitleSearch(String articletitle) {
         return articleCustomMapper.findByNoteTitleSearch(articletitle);
+    }
+
+    /**
+     * 根据id更新文章
+     *
+     * @param articleEx
+     */
+    public void updateArticleByArticleId(ArticleEx articleEx) {
+        articleCustomMapper.updateArticleByArticleId(articleEx);
+    }
+
+    /**
+     * 文章的发布
+     *
+     * @param articleEx
+     */
+    public void insertArticle(ArticleEx articleEx) {
+        articleCustomMapper.insertArticle(articleEx);
+    }
+
+    /**
+     * 根据文章标题查找，是否重复，用于发布查重
+     *
+     * @param articletitle
+     * @return
+     */
+    public ArticleEx findByTitle(String articletitle) {
+        return articleCustomMapper.findByTitle(articletitle);
+    }
+
+    /**
+     * 用于更新查重
+     * @param articleEx
+     * @return
+     */
+    public ArticleEx findByTitleAndId(ArticleEx articleEx) {
+        return articleCustomMapper.findByTitleAndId(articleEx);
     }
 
     /**

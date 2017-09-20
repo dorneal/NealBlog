@@ -153,7 +153,7 @@
         FROM
         article
         WHERE
-        article.CategoryId=3
+        article.CategoryId<![CDATA[ <> ]]>2
         ORDER BY
         ArticleTime DESC
         limit #{startpage},#{size}
@@ -187,6 +187,7 @@
         category.CategoryId,
         author.AuthorId,
         author.AuthorName,
+        article.ArticleId,
         article.ArticleTime,
         article.ArticleTitle,
         article.easyContent,
@@ -212,7 +213,7 @@
     FROM
     article
     WHERE
-    article.CategoryId=3
+    article.CategoryId<![CDATA[ <> ]]>2
     AND
     article.ArticleTitle LIKE CONCAT('%',#{articleTitle},'%')
     ORDER BY
@@ -233,5 +234,29 @@
         article.ArticleTitle LIKE CONCAT('%',#{articleTitle},'%')
         ORDER BY
         ArticleTime DESC
+    </select>
+    <!--根据ID更新文章-->
+    <update id="updateArticleByArticleId" parameterType="articleEx">
+
+UPDATE article SET
+ article.`ArticleTitle`=#{articletitle},
+ article.`ArticleTime`=#{articletime},
+ article.`easyContent`=#{easycontent},
+ article.`ArticleContent`=#{articlecontent}
+ WHERE article.`ArticleId`=#{articleid}
+    </update>
+    <!--插入数据-->
+    <insert id="insertArticle" parameterType="articleEx">
+    INSERT INTO
+    article(article.ArticleTitle,article.AuthorId,article.ArticleTime,article.CategoryId,article.easyContent,article.ArticleContent)
+    VALUE(#{articletitle},#{authorid},#{articletime},#{categoryid},#{easycontent},#{articlecontent})
+    </insert>
+
+    <!--根据文章标题查找是否有这个记录-->
+    <select id="findByTitle" parameterType="java.lang.String" resultType="articleEx">
+        SELECT * FROM article WHERE ArticleTitle=#{articletitle}
+    </select>
+    <select id="findByTitleAndId" parameterType="articleEx" resultType="articleEx">
+        SELECT * FROM article WHERE ArticleTitle=#{articletitle} AND ArticleId<![CDATA[ <> ]]>#{articleid}
     </select>
 </mapper>

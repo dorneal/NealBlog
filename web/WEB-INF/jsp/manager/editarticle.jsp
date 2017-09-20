@@ -14,18 +14,23 @@
         </div>
         <div class="panel-body">
             <div>
-                <form class="bs-example bs-example-form" role="form">
+                <form class="bs-example bs-example-form" role="form"
+                      action="${pageContext.request.contextPath}/manager/updateArticle" method="post">
+                    <c:if test="${requestScope.articleTitleRepeatError!=null}">
+                        <span style="color: red">${requestScope.articleTitleRepeatError}</span>
+                    </c:if>
+                    <input type="hidden" value="${requestScope.articleVoList.article.articleid}" name="articleid"/>
                     <div class="input-group">
                         <span class="input-group-addon">文章标题</span>
                         <input type="text" class="form-control"
-                               placeholder="${requestScope.articleVoList.article.articletitle}" name="articletitle"
+                               value="${requestScope.articleVoList.article.articletitle}" name="articletitle"
                                maxlength="50">
                     </div>
                     <br>
                     <div class="input-group">
                         <span class="input-group-addon">发布时间</span>
                         <input type="text" class="form-control"
-                               placeholder="${requestScope.articleVoList.article.articletime}" name="articletime"
+                               value="${requestScope.articleVoList.article.articletime}" name="articletime"
                                maxlength="50">
                     </div>
                     <br>
@@ -48,16 +53,15 @@
                     <div class="input-group">
                         <span class="input-group-addon">简要内容</span>
                         <textarea name="easycontent" id="article-des" cols="30" rows="5" class="form-control"
-                                  style="resize: none;"
-                                  placeholder="${requestScope.articleVoList.article.easycontent}"></textarea>
+                                  style="resize: none;">${requestScope.articleVoList.article.easycontent}</textarea>
                     </div>
                     <br>
                     <div id="editor">
-                        <p>${requestScope.articleVoList.article.articlecontent}</p>
+                        <span>${requestScope.articleVoList.article.articlecontent}</span>
                     </div>
                     <br>
-                    <button id="btn1" class="btn btn-primary" style="float: right;" type="submit">发布</button>
                     <input type="hidden" name="articlecontent" id="articlecontent">
+                    <button id="btn1" class="btn btn-primary" style="float: right;" type="submit">更新</button>
                     <!-- 注意， 只需要引用 JS，无需引用任何 CSS ！！！-->
                     <script type="text/javascript" src="${pageContext.request.contextPath}/js/wangEditor.js"></script>
                     <script type="text/javascript">

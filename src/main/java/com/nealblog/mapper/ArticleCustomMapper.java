@@ -1,5 +1,6 @@
 package com.nealblog.mapper;
 
+import com.nealblog.po.Article;
 import com.nealblog.po.ArticleEx;
 import com.nealblog.po.ArticleVo;
 import org.apache.ibatis.annotations.Param;
@@ -54,4 +55,16 @@ public interface ArticleCustomMapper {
 
     //用于博主点击搜索（笔记）
     List<ArticleVo> findByNoteTitleSearch(String articletitle);
+
+    //根据id更新文章
+    void updateArticleByArticleId(ArticleEx articleEx);
+
+    //文章的发布
+    void insertArticle(ArticleEx articleEx);
+
+    //根据文章标题查找是否重复，用于发布文章
+    ArticleEx findByTitle(String articletitle);
+
+    //根据文章标题和文章ID查找是否重复，用于更新标题
+    ArticleEx findByTitleAndId(ArticleEx articleEx);
 }

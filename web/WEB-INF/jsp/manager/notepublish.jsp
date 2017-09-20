@@ -14,7 +14,10 @@
         </div>
         <div class="panel-body">
             <div>
-                <form class="bs-example bs-example-form" role="form">
+                <form class="bs-example bs-example-form" role="form" action="${pageContext.request.contextPath}/manager/insertArticle" method="post">
+                    <c:if test="${requestScope.articleTitleRepeatError!=null}">
+                        <span style="color: red">${requestScope.articleTitleRepeatError}</span>
+                    </c:if>
                     <div class="input-group">
                         <span class="input-group-addon">笔记标题</span>
                         <input type="text" class="form-control" placeholder="Title" name="articletitle" maxlength="50">

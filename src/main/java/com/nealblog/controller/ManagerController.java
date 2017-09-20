@@ -206,4 +206,52 @@ public class ManagerController {
         request.setAttribute("articleVos", articleVos);
         return "manager/notemanager";
     }
+
+    /**
+     * 根据ID更新文章
+     *
+     * @param articleEx
+     * @return
+     */
+    @RequestMapping("updateArticle")
+    public String updateArticle(HttpServletRequest request, ArticleEx articleEx) {
+        //判断文章标题是否已经拥有
+        ArticleEx articleEx1 = articleService.findByTitleAndId(articleEx);
+        if (articleEx1!=null) {
+            request.setAttribute("articleTitleRepeatError", "标题已有，请换一个");
+            return "manager/editarticle";
+        }
+        articleService.updateArticleByArticleId(articleEx);
+        //如果文章类型是笔记，就跳转到笔记管理页面
+        if (articleEx.getCategoryid() == 2) {
+            return "redirect:/manager/managerByNote";
+        }
+        return "redirect:/manager/managerByArticle";
+    }
+
+    /**
+     * 发布文章或者笔记
+     *
+     * @param request
+     * @param articleEx
+     * @return
+     */
+    @RequestMapping("/insertArticle")
+    public String insertArticle(HttpServletRequest request, ArticleEx articleEx) {
+        //判断文章标题是否已经拥有
+        ArticleEx articleEx1 = articleService.findByTitle(articleEx.getArticletitle());
+        if (articleEx.getArticletitle().equals(articleEx1.getArticletitle())) {
+            request.setAttribute("articleTitleRepeatError", "标题已有，请换一个");
+            if (articleEx.getCategoryid() == 2) {
+                return "forward:/manager/notepublish";
+            }
+            return "forward:/manager/articlePublish";
+        }
+        articleService.insertArticle(articleEx);
+        //如果文章类型是笔记，就跳转到笔记管理页面
+        if (articleEx.getCategoryid() == 2) {
+            return "redirect:/manager/managerByNote";
+        }
+        return "redirect:/manager/managerByArticle";
+    }
 }
