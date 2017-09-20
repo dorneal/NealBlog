@@ -110,10 +110,32 @@
       article LEFT JOIN author ON(article.AuthorId=author.AuthorId),category
     WHERE
       article.ArticleTitle LIKE CONCAT('%',#{articleTitle},'%')
+    AND
+        article.CategoryId<![CDATA[ <> ]]>2
     GROUP BY
      article.ArticleTitle
     ORDER BY
      article.ClickCount DESC;
+    </select>
+
+    <!--处理站内搜索-->
+    <select id="findBySearch2" parameterType="java.lang.String" resultMap="AACResultMap">
+        SELECT
+        article.ArticleTitle,
+        author.AuthorName,
+        article.ClickCount,
+        article.easyContent,
+        category.CategoryName
+        FROM
+        article LEFT JOIN author ON(article.AuthorId=author.AuthorId),category
+        WHERE
+        article.ArticleTitle LIKE CONCAT('%',#{articleTitle},'%')
+        AND
+        article.CategoryId=2
+        GROUP BY
+        article.ArticleTitle
+        ORDER BY
+        article.ClickCount DESC;
     </select>
 
     <!--查询最新的10条文章记录-->

@@ -32,6 +32,9 @@ public interface ArticleCustomMapper {
     //个人文章页面站内搜索
     List<ArticleVo> findBySearch(String articleTitle);
 
+    //个人文章页面站内搜索
+    List<ArticleVo> findBySearch2(String articleTitle);
+
     //查询前10行的文章记录
     List<ArticleEx> findListArticle();
 

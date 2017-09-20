@@ -43,7 +43,6 @@
                     <th>ID</th>
                     <th>名称</th>
                     <th>发布文章数量</th>
-                    <th>操作</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -52,7 +51,6 @@
                         <td>${la.authorid}</td>
                         <td>${la.authorname}</td>
                         <td>${la.publishcount}</td>
-                        <td><a href="">更新</a></td>
                     </tr>
                 </c:forEach>
                 </tbody>
@@ -63,7 +61,6 @@
                 <tr>
                     <th>ID</th>
                     <th>名称</th>
-                    <th>操作</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -71,7 +68,6 @@
                     <tr>
                         <td>${lc.categoryid}</td>
                         <td>${lc.categoryname}</td>
-                        <td><a href="">更新</a></td>
                     </tr>
                 </c:forEach>
                 </tbody>

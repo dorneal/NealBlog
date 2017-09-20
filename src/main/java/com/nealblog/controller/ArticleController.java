@@ -84,6 +84,12 @@ public class ArticleController {
         return "forward:/articleTitle";
     }
 
+    /**
+     * 点击查看笔记原文
+     *
+     * @param request
+     * @return
+     */
     @RequestMapping("/noteContext")
     public String noteContext(HttpServletRequest request) {
         //获取所点击的文章标题
@@ -118,6 +124,32 @@ public class ArticleController {
         }
         request.setAttribute("searchResult", searchResult);
         return "forward:/articleTitle";
+    }
+
+
+    /**
+     * 站内搜索
+     *
+     * @param request
+     * @return
+     */
+    @RequestMapping("/noteSearch")
+    public String noteSearch(HttpServletRequest request) {
+        String articleTitle = request.getParameter("inputContent");
+        //如果输入框为空，则直接返回当前页面
+        if (articleTitle == null || "".equals(articleTitle)) {
+            return "forward:/nowNote";
+        }
+        List<ArticleVo> searchResult = articleService.findBySearch2(articleTitle);
+        //如果查询结果为空
+        if (searchResult == null || searchResult.size() == 0) {
+            request.setAttribute("titleResult", articleTitle);
+            //判断变量
+            request.setAttribute("boolResult", "have");
+            return "forward:/note";
+        }
+        request.setAttribute("searchResult", searchResult);
+        return "forward:/note";
     }
 
     //返回主页

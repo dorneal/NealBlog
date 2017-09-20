@@ -203,6 +203,7 @@ public class ArticleServiceImpl implements ArticleService {
 
     /**
      * 用于更新查重
+     *
      * @param articleEx
      * @return
      */
@@ -220,13 +221,23 @@ public class ArticleServiceImpl implements ArticleService {
     }
 
     /**
-     * 搜索查询
+     * 搜索查询文章
      *
      * @param articleTitle
      * @return
      */
     public List<ArticleVo> findBySearch(String articleTitle) {
         return articleCustomMapper.findBySearch(articleTitle);
+    }
+
+    /**
+     * 搜索查询笔记
+     *
+     * @param articleTitle
+     * @return
+     */
+    public List<ArticleVo> findBySearch2(String articleTitle) {
+        return articleCustomMapper.findBySearch2(articleTitle);
     }
 
     /**

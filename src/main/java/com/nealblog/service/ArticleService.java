@@ -25,6 +25,9 @@ public interface ArticleService {
     //处理文章搜索
     List<ArticleVo> findBySearch(String articleTitle);
 
+    //个人文章页面站内搜索
+    List<ArticleVo> findBySearch2(String articleTitle);
+
     //查找最近的10条文章记录
     List<ArticleEx> findListArticle();
 
