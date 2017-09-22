@@ -8,7 +8,7 @@
         String path = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+request.getContextPath();
         switch (request.getRequestURI()){
             case "/NealBlog/WEB-INF/jsp/main/note/note-catalog.jsp":
-                url = path+"/note";
+                url = path+"/nowNote";
                 currentPageName = "笔记";
                 break;
             case "/NealBlog/WEB-INF/jsp/main/article.jsp":

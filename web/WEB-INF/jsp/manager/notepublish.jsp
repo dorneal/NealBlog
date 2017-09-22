@@ -41,7 +41,7 @@
                         <span class="input-group-addon">笔记类别</span>
                         <select class="form-control" name="categoryid">
                             <c:forEach items="${requestScope.listByCategory}" var="lbc">
-                                <option value="${lbc.categoryid}">${lbc.categoryname}</option>
+                                <option value="2">${lbc.categoryname}</option>
                             </c:forEach>
                         </select>
                     </div>
