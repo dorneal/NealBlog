@@ -7,19 +7,19 @@
         String currentPageName;
         String path = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+request.getContextPath();
         switch (request.getRequestURI()){
-            case "/NealBlog/WEB-INF/jsp/main/note/note-catalog.jsp":
+            case "/WEB-INF/jsp/main/note/note-catalog.jsp":
                 url = path+"/nowNote";
                 currentPageName = "笔记";
                 break;
-            case "/NealBlog/WEB-INF/jsp/main/article.jsp":
+            case "/WEB-INF/jsp/main/article.jsp":
                 url = path+"/nowArticle";
                 currentPageName = "个人文章";
                 break;
-            case "/NealBlog/WEB-INF/jsp/main/aboutMe.jsp":
+            case "/WEB-INF/jsp/main/aboutMe.jsp":
                 url = path+"/aboutMe";
                 currentPageName = "关于我";
                 break;
-            case "/NealBlog/WEB-INF/jsp/main/comment.jsp":
+            case "/WEB-INF/jsp/main/comment.jsp":
                 url = path+"/comment";
                 currentPageName = "给我留言";
                 break;
