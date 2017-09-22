@@ -17,4 +17,7 @@ public interface AuthorService {
 
     //查询所有作者
     List<Author> findListAuthor();
+
+    //根据作者ID，更新作者发布文章数量
+    void updatePublishCount(int authorid);
 }

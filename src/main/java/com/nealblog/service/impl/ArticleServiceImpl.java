@@ -212,6 +212,16 @@ public class ArticleServiceImpl implements ArticleService {
     }
 
     /**
+     * 笔记左侧栏的点击事件
+     *
+     * @param articletitle
+     * @return
+     */
+    public List<ArticleVo> findByNoteTitle(String articletitle) {
+        return articleCustomMapper.findByNoteTitle(articletitle);
+    }
+
+    /**
      * 更新文章点击数
      *
      * @param articleTitle 文章标题

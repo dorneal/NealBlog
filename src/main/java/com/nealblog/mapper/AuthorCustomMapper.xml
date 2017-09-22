@@ -16,4 +16,8 @@
     <select id="findListAuthor" resultType="author">
         SELECT AuthorId,AuthorName,PublishCount FROM author
     </select>
+    <!--更新作者文章发布数量-->
+    <update id="updatePublishCount" parameterType="int">
+        UPDATE author SET author.PublishCount=(SELECT COUNT(*) FROM article WHERE article.AuthorId=#{authorid}) WHERE author.AuthorId=#{authorid}
+    </update>
 </mapper>

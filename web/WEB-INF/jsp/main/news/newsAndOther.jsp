@@ -69,7 +69,7 @@
                                 ${requestScope.articleData.article.clickcount} <span
                                     class="glyphicon glyphicon-eye-open"></span>
                         </p></div>
-                    <div style="font-family: Simsun,serif;font-size: 1.2em;padding: 10px 10px 20px 10px;word-wrap: break-word;line-height: 130%;">
+                    <div style="font-family: 微软雅黑;font-size: 1.2em;padding: 10px 10px 20px 10px;">
                             ${requestScope.articleData.article.articlecontent}
                     </div>
                 </div>

@@ -281,4 +281,9 @@ UPDATE article SET
     <select id="findByTitleAndId" parameterType="articleEx" resultType="articleEx">
         SELECT * FROM article WHERE ArticleTitle=#{articletitle} AND ArticleId<![CDATA[ <> ]]>#{articleid}
     </select>
+
+    <!--根据左侧栏点击查询-->
+    <select id="findByNoteTitle" parameterType="java.lang.String" resultMap="AACResultMap">
+        SELECT * FROM article WHERE article.CategoryId=2 AND article.ArticleTitle LIKE CONCAT('%',#{articleTitle},'%')
+    </select>
 </mapper>

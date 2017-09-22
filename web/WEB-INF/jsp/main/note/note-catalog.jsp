@@ -34,7 +34,14 @@
                         <jsp:include page="difficult.jsp"/>
                 </div>
 			</div>
-            <c:if test="${requestScope.searchResult==null and requestScope.boolResult==null}">
+            <c:if test="${requestScope.noPageContent!=null}">
+                <jsp:include page="./nonotepagecontent.jsp"/>
+            </c:if>
+            <%--左侧栏的点击事件--%>
+            <c:if test="${requestScope.pageContents!=null}">
+                <jsp:include page="./notepagecontent.jsp"/>
+            </c:if>
+            <c:if test="${requestScope.searchResult==null and requestScope.boolResult==null and requestScope.pageContents==null and requestScope.noPageContent==null}">
                 <%--搜索框为空--%>
                 <jsp:include page="../news/newsAndOther.jsp"/>
             </c:if>

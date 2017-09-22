@@ -13,4 +13,7 @@ public interface AuthorCustomMapper {
 
     //查询所有作者
     List<Author> findListAuthor();
+
+    //根据作者id，更新作者文章发布数量
+    void updatePublishCount(int authorid);
 }

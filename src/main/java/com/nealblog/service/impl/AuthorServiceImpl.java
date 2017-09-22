@@ -29,4 +29,13 @@ public class AuthorServiceImpl implements AuthorService {
     public List<Author> findListAuthor() {
         return authorCustomMapper.findListAuthor();
     }
+
+    /**
+     * 根据作者ID，更新作者发布文章数量
+     *
+     * @param authorid
+     */
+    public void updatePublishCount(int authorid) {
+        authorCustomMapper.updatePublishCount(authorid);
+    }
 }

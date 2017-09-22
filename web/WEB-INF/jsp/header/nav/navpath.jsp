@@ -1,6 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" %>
-<ol class="breadcrumb" style="background-color: #ffffff">
+<ol class="breadcrumb" style="background-color: #ffffff;font-size: 1.2em;">
     <li><span class="icon-location2"></span>当前位置</li>
     <%
         String url;

@@ -63,4 +63,7 @@ public interface ArticleService {
 
     //根据文章标题和文章ID查找是否重复，用于更新标题
     ArticleEx findByTitleAndId(ArticleEx articleEx);
+
+    //根据笔记页面左侧栏点击事件
+    List<ArticleVo> findByNoteTitle(String articletitle);
 }

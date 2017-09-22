@@ -58,6 +58,11 @@ public class ManagerController {
      */
     @RequestMapping("/showList")
     public String showList(HttpServletRequest request) {
+        //先对作者发布数量进行更新
+        authorService.updatePublishCount(1);
+        authorService.updatePublishCount(2);
+        authorService.updatePublishCount(3);
+        //再查询
         List<ArticleEx> listByArticle = findListArticle();
         List<Category> listByCategory = findListCategory();
         List<Author> listByAuthor = findListAuthor();
@@ -217,7 +222,7 @@ public class ManagerController {
     public String updateArticle(HttpServletRequest request, ArticleEx articleEx) {
         //判断文章标题是否已经拥有
         ArticleEx articleEx1 = articleService.findByTitleAndId(articleEx);
-        if (articleEx1!=null) {
+        if (articleEx1 != null) {
             request.setAttribute("articleTitleRepeatError", "标题已有，请换一个");
             return "manager/editarticle";
         }
@@ -240,7 +245,7 @@ public class ManagerController {
     public String insertArticle(HttpServletRequest request, ArticleEx articleEx) {
         //判断文章标题是否已经拥有
         ArticleEx articleEx1 = articleService.findByTitle(articleEx.getArticletitle());
-        if (articleEx1!=null) {
+        if (articleEx1 != null) {
             request.setAttribute("articleTitleRepeatError", "标题已有，请换一个");
             if (articleEx.getCategoryid() == 2) {
                 return "forward:/manager/notepublish";

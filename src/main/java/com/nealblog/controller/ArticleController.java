@@ -152,6 +152,24 @@ public class ArticleController {
         return "forward:/note";
     }
 
+    /**
+     * 笔记页面左侧栏单击事件
+     *
+     * @param request
+     * @return
+     */
+    @RequestMapping("thisPageContent")
+    public String thisPageContent(HttpServletRequest request) {
+        String articletitle = request.getParameter("articletitle");
+        List<ArticleVo> pageContents = articleService.findByNoteTitle(articletitle);
+        if (pageContents.size() == 0) {
+            request.setAttribute("noPageContent", "博主太懒了，暂时没有更新.........");
+            return "forward:/note";
+        }
+        request.setAttribute("pageContents", pageContents);
+        return "forward:/note";
+    }
+
     //返回主页
     @RequestMapping("/home")
     public String home() {
