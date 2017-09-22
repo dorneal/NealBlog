@@ -68,11 +68,23 @@
                             <span class="glyphicon glyphicon-tags"></span>&nbsp;&nbsp;${requestScope.articleData.category.categoryname}&nbsp;&nbsp;
                                 ${requestScope.articleData.article.clickcount} <span
                                     class="glyphicon glyphicon-eye-open"></span>
-                        </p></div>
+                        </p>
+                    </div>
                     <div style="font-family: 微软雅黑;font-size: 1.2em;padding: 10px 10px 20px 10px;">
                             ${requestScope.articleData.article.articlecontent}
                     </div>
                 </div>
+            </div>
+            <div>
+                <!-- JiaThis Button BEGIN -->
+                <script type="text/javascript">
+                    var jiathis_config = {data_track_clickback:'true'};
+                </script>
+                <script type="text/javascript" src="http://v3.jiathis.com/code/jiathis_r.js?btn=r2.gif&amp;uid=2144319" charset="utf-8"></script>
+                <!-- JiaThis Button END -->
+                <!-- UJian Button BEGIN -->
+                <script type="text/javascript" src="http://v1.ujian.cc/code/ujian.js?type=slide"></script>
+                <!-- UJian Button END -->
             </div>
             </c:if>
         </div>
