@@ -9,12 +9,12 @@
     <div class="row">
         <div class="col-md-3" style="background-color: rgb(211, 211, 211);padding-top: 20px;padding-bottom: 20px;">
             <div class="">
-                <form name="searchArticle" method="post"
-                      action="${pageContext.request.contextPath}/articleSearch">
-                    <label><input type="search" name="inputContent"></label>
-                    <label><input type="submit" class="btn-default" value="搜索"></label>
-                </form>
                 <div class="container">
+                    <form name="searchArticle" method="post"
+                          action="${pageContext.request.contextPath}/articleSearch">
+                        <label><input type="search" name="inputContent" style="width: 180px;"></label>
+                        <label><input type="submit" class="btn-default" value="搜索"></label>
+                    </form>
                     <div class="container navbar-inverse" style="margin-top: 10px;border-radius: 6px;">
                         <button type="button" class="navbar-toggle" data-toggle="collapse"
                                 data-target="#example-navbar-collapse1" style="float: left;">
