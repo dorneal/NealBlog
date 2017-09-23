@@ -1,8 +1,16 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" %>
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
+    <meta name="title" content="NealBlog,nealblog" />
+    <meta name="author" content="neal" />
+    <meta name="subject" content="个人博客,博客" />
+    <meta name="description" content="个人博客，笔记，文章" />
+    <meta name="keywords" content="个人博客,JAVA笔记分享,JAVA博客" />
+    <meta name="generator" content="Sublime,DW,idea" />
+    <meta name="language" content="JAVA" />
+    <meta name="designer" content="neal,Neal" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>NealBlog</title>
