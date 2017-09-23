@@ -38,6 +38,6 @@
             </div>
         </div>
     </div>
-    <div class="text-center" style="color: #ccc;font-size: 1.1em;margin-top: 10px;"><p>Design By Neal Copyright&copy;2017，备案号：<a
-            href="http://www.miitbeian.gov.cn/" target="_blank">湘ICP备17017819号</a></p></div>
+    <div class="text-center" style="color: #ccc;font-size: 1.1em;margin-top: 10px;"><p>Design By Neal Copyright&copy;2017 | 备案号：<a
+            href="http://www.miitbeian.gov.cn/" target="_blank">湘ICP备17017819号</a> | <a href="https://baike.baidu.com/item/%E9%81%BF%E9%A3%8E%E6%B8%AF%E5%8E%9F%E5%88%99">避风港原则</a></p></div>
 </footer>
