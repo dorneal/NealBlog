@@ -52,35 +52,23 @@
                                   style="resize: none;"></textarea>
                     </div>
                     <br>
-                    <div id="editor">
-                        <p>文章内容</p>
-                    </div>
+                    <div id="summernote"></div>
+                    <script>
+                        $('#summernote').summernote({
+                            placeholder: '请输入文章',
+                            tabsize: 2,
+                            height: 240
+                        });
+                    </script>
                     <br>
                     <button id="btn1" class="btn btn-primary" style="float: right;" type="submit">发布</button>
-                    <input type="hidden" name="articlecontent" id="articlecontent">
-                    <!-- 注意， 只需要引用 JS，无需引用任何 CSS ！！！-->
-                    <script type="text/javascript" src="${pageContext.request.contextPath}/js/wangEditor.js"></script>
-                    <script type="text/javascript">
-                        var E = window.wangEditor;
-                        var editor = new E('#editor');
-                        editor.customConfig.menus =
-                            [
-                                'head',  // 标题
-                                'link',  // 插入链接
-                                'justify',  // 对齐方式
-                                'foreColor',  // 文字颜色
-                                'image',  // 插入图片
-                                'code',  // 插入代码
-                                'undo'  // 撤销
-                            ];
-                        editor.customConfig.uploadImgShowBase64 = true;
-                        editor.create();
-                        document.getElementById('btn1').addEventListener('click', function () {
-                            // 读取 html
+                    <script>
+                        $('#btn1').click(function() {
+                            var markupStr = $('#summernote').summernote('code');
                             var articlecontent = document.getElementById('articlecontent');
-                            articlecontent.value = editor.txt.html();
+                            articlecontent.value = markupStr;
                             alert(articlecontent.value);
-                        }, false);
+                        });
                     </script>
                     <br>
                 </form>

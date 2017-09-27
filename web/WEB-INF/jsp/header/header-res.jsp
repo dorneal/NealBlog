@@ -19,9 +19,12 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath }/css/style2.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath }/css/style3.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath }/css/mystyle.css">
+    <%--<link rel="stylesheet" href="${pageContext.request.contextPath}/css/wangEditor.css">--%>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/summernote-bs4.css">
     <link rel="shortcut icon" href="${pageContext.request.contextPath}/imgs/icon/icon.ico">
     <script src="${pageContext.request.contextPath }/js/jquery-3.2.1.js"></script>
     <script src="${pageContext.request.contextPath }/js/bootstrap.min.js"></script>
+    <script src="${pageContext.request.contextPath }/js/summernote-bs4.js"></script>
     <style>
         /* blockquote 样式 */
         blockquote {

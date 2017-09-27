@@ -10,7 +10,7 @@ PhotoShop CS5.1
 Mysql 5.5 
 Sublime text3(3126)
 使用的框架：bootstrap3.3.7、Spring4.0.3、SpringMVC、mybatis3.4.4
-富文本编辑器：wangEditor v3.0.9
+富文本编辑器：wangEditor v3.0.9(已经替换掉),summernote 0.8
 
 需求：
 1.管理登录退出(已移除)
@@ -93,3 +93,7 @@ http://120.24.247.104/NealBlog/
 
 2017/9/24
 解决域名被恶意解析，解决上传不了图片，将数据库text类型字段改成longtext类型字段
+
+2017/9/27
+增加拦截器，阻止未登录访问后台。更换富文本编辑器使用summernote富文本编辑器。
+//TODO 注意各类插件的安装。

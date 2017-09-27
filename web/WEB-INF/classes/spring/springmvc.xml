@@ -1,87 +1,88 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	   xmlns:mvc="http://www.springframework.org/schema/mvc"
-	   xmlns:context="http://www.springframework.org/schema/context"
-	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	   xsi:schemaLocation="http://www.springframework.org/schema/beans
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
             http://www.springframework.org/schema/beans/spring-beans.xsd
             http://www.springframework.org/schema/context
             http://www.springframework.org/schema/context/spring-context.xsd
             http://www.springframework.org/schema/mvc
             http://www.springframework.org/schema/mvc/spring-mvc.xsd">
-	<!-- 为了防止代码量过大，可以使用注解扫描 -->
-	<context:component-scan base-package="com.nealblog.controller"/>
+    <!-- 为了防止代码量过大，可以使用注解扫描 -->
+    <context:component-scan base-package="com.nealblog.controller"/>
 
-	<!-- 处理器映射器，处理器适配器自动配置-->
-	<!--注入自定义参数绑定组件，校验器-->
-	<mvc:annotation-driven/>
+    <!-- 处理器映射器，处理器适配器自动配置-->
+    <!--注入自定义参数绑定组件，校验器-->
+    <mvc:annotation-driven/>
 
-	<!-- 视图解析器
+    <!-- 视图解析器
     解析jsp视图,默认使用jstl标签，classpath下得有jstl的jar包
      -->
-	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-		<!-- 前缀，配置好后，路径可省略这部分不写 -->
-		<property name="prefix" value="/WEB-INF/jsp/"/>
-		<!-- 后缀，配置好后，路径可省略这部分不写 -->
-		<property name="suffix" value=".jsp"/>
-	</bean>
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <!-- 前缀，配置好后，路径可省略这部分不写 -->
+        <property name="prefix" value="/WEB-INF/jsp/"/>
+        <!-- 后缀，配置好后，路径可省略这部分不写 -->
+        <property name="suffix" value=".jsp"/>
+    </bean>
 
-	<!-- 自定义参数绑定组件 -->
-	<!--<bean id="conversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">-->
-		<!--&lt;!&ndash; 转换器 &ndash;&gt;-->
-		<!--<property name="converters">-->
-			<!--<list>-->
-				<!--&lt;!&ndash;日期转换器&ndash;&gt;-->
-				<!--<bean class="neal.ssm.utils.ItemsDateConverter" />-->
-			<!--</list>-->
-		<!--</property>-->
-	<!--</bean>-->
+    <!-- 自定义参数绑定组件 -->
+    <!--<bean id="conversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">-->
+    <!--&lt;!&ndash; 转换器 &ndash;&gt;-->
+    <!--<property name="converters">-->
+    <!--<list>-->
+    <!--&lt;!&ndash;日期转换器&ndash;&gt;-->
+    <!--<bean class="neal.ssm.utils.ItemsDateConverter" />-->
+    <!--</list>-->
+    <!--</property>-->
+    <!--</bean>-->
 
-	<!--校验器-->
-	<!--<bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">-->
-		<!--&lt;!&ndash;校验器&ndash;&gt;-->
-		<!--<property name="providerClass" value="org.hibernate.validator.HibernateValidator"/>-->
-		<!--&lt;!&ndash;指定实验使用的资源文件，如果不指定默认使用classpath下面的ValidationMessage.properties&ndash;&gt;-->
-		<!--<property name="validationMessageSource" ref="messageSource"/>-->
-	<!--</bean>-->
+    <!--校验器-->
+    <!--<bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">-->
+    <!--&lt;!&ndash;校验器&ndash;&gt;-->
+    <!--<property name="providerClass" value="org.hibernate.validator.HibernateValidator"/>-->
+    <!--&lt;!&ndash;指定实验使用的资源文件，如果不指定默认使用classpath下面的ValidationMessage.properties&ndash;&gt;-->
+    <!--<property name="validationMessageSource" ref="messageSource"/>-->
+    <!--</bean>-->
 
-	<!--检验错误信息配置文件-->
-	<!--<bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">-->
-		<!--&lt;!&ndash;资源名&ndash;&gt;-->
-		<!--<property name="basenames">-->
-			<!--<list>-->
-				<!--<value>customValidationMessage</value>-->
-			<!--</list>-->
-		<!--</property>-->
-		<!--&lt;!&ndash;资源文件编码格式&ndash;&gt;-->
-		<!--<property name="fileEncodings" value="utf-8"/>-->
-		<!--&lt;!&ndash;对资源文件内容的缓存时间&ndash;&gt;-->
-		<!--<property name="cacheSeconds" value="120"/>-->
-	<!--</bean>-->
+    <!--检验错误信息配置文件-->
+    <!--<bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">-->
+    <!--&lt;!&ndash;资源名&ndash;&gt;-->
+    <!--<property name="basenames">-->
+    <!--<list>-->
+    <!--<value>customValidationMessage</value>-->
+    <!--</list>-->
+    <!--</property>-->
+    <!--&lt;!&ndash;资源文件编码格式&ndash;&gt;-->
+    <!--<property name="fileEncodings" value="utf-8"/>-->
+    <!--&lt;!&ndash;对资源文件内容的缓存时间&ndash;&gt;-->
+    <!--<property name="cacheSeconds" value="120"/>-->
+    <!--</bean>-->
 
-	<!--全局异常处理器-->
-	<!--<bean class="neal.ssm.exception.CustomExceptionResolver"/>-->
+    <!--全局异常处理器-->
+    <!--<bean class="neal.ssm.exception.CustomExceptionResolver"/>-->
 
-	<!--文件上传-->
-	<!--multipart解析器-->
-	<!--<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">-->
-		<!--&lt;!&ndash;设置上传文件大小为10M&ndash;&gt;-->
-		<!--<property name="maxUploadSize" value="10485760"/>-->
-	<!--</bean>-->
+    <!--文件上传-->
+    <!--multipart解析器-->
+    <!--<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">-->
+    <!--&lt;!&ndash;设置上传文件大小为10M&ndash;&gt;-->
+    <!--<property name="maxUploadSize" value="10485760"/>-->
+    <!--</bean>-->
 
-	<!--静态资源解析（js、css、img等文件）-->
-	<mvc:resources mapping="/js/**" location="/js/"/>
-	<mvc:resources mapping="/imgs/**" location="/imgs/"/>
-	<mvc:resources mapping="/fonts/**" location="/fonts/"/>
-	<mvc:resources mapping="/css/**" location="/css/"/>
+    <!--静态资源解析（js、css、img等文件）-->
+    <mvc:resources mapping="/js/**" location="/js/"/>
+    <mvc:resources mapping="/imgs/**" location="/imgs/"/>
+    <mvc:resources mapping="/fonts/**" location="/fonts/"/>
+    <mvc:resources mapping="/css/**" location="/css/"/>
 
-	<!--拦截器-->
-	<!--<mvc:interceptors>-->
-		<!--&lt;!&ndash;多个拦截器顺序执行&ndash;&gt;-->
-		<!--&lt;!&ndash;/**表示拦截所有的url包括子路径&ndash;&gt;-->
-		<!--<mvc:interceptor>-->
-			<!--<mvc:mapping path="/**"/>-->
-			<!--<bean class="neal.ssm.interceptor.LoginInterceptor"/>-->
-		<!--</mvc:interceptor>-->
-	<!--</mvc:interceptors>-->
+    <!--拦截器-->
+    <mvc:interceptors>
+        <!--多个拦截器顺序执行-->
+        <!--/**表示拦截所有的url包括子路径-->
+        <mvc:interceptor>
+            <mvc:mapping path="/manager/**"/>
+            <!--登录拦截器-->
+            <bean class="com.nealblog.interceptor.LoginInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
 </beans>
