@@ -42,11 +42,14 @@
                         <li>
                             <a href="${pageContext.request.contextPath}/nowNote?currentPage=${requestScope.pageBean.currPage+1}">&raquo;</a>
                         </li>
-                        <li><a href="${pageContext.request.contextPath}/nowNote?currentPage=${requestScope.pageBean.totalPage}">尾页</a></li>
+                        <li>
+                            <a href="${pageContext.request.contextPath}/nowNote?currentPage=${requestScope.pageBean.totalPage}">尾页</a>
+                        </li>
                     </c:if>
                     <li>
                         &nbsp;
-                        <select class="form-control" name="currentPage" style="width: 70px;display: inline" onchange="location.href=this.value;">
+                        <select class="form-control" name="currentPage" style="width: 70px;display: inline"
+                                onchange="location.href=this.value;">
                             <c:forEach var="lba" begin="1" end="${requestScope.pageBean.totalPage+1}" step="1">
                                 <option value="${pageContext.request.contextPath}/nowNote?currentPage=${lba}">${lba}</option>
                             </c:forEach>
@@ -76,15 +79,29 @@
                 </div>
             </div>
             <div>
-                <!-- JiaThis Button BEGIN -->
-                <script type="text/javascript">
-                    var jiathis_config = {data_track_clickback:'true'};
-                </script>
-                <script type="text/javascript" src="http://v3.jiathis.com/code/jiathis_r.js?btn=r2.gif&amp;uid=2144319" charset="utf-8"></script>
-                <!-- JiaThis Button END -->
-                <!-- UJian Button BEGIN -->
-                <script type="text/javascript" src="http://v1.ujian.cc/code/ujian.js?type=slide"></script>
-                <!-- UJian Button END -->
+
+                <script>window._bd_share_config = {
+                    "common": {
+                        "bdSnsKey": {},
+                        "bdText": "",
+                        "bdMini": "1",
+                        "bdMiniList": false,
+                        "bdPic": "",
+                        "bdStyle": "0",
+                        "bdSize": "16"
+                    },
+                    "slide": {"type": "slide", "bdImg": "0", "bdPos": "right", "bdTop": "100"},
+                    "image": {
+                        "viewList": ["qzone", "tsina", "tqq", "renren", "weixin"],
+                        "viewText": "分享到：",
+                        "viewSize": "16"
+                    },
+                    "selectShare": {
+                        "bdContainerClass": null,
+                        "bdSelectMiniList": ["qzone", "tsina", "tqq", "renren", "weixin"]
+                    }
+                };
+                with (document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)];</script>
             </div>
             </c:if>
         </div>

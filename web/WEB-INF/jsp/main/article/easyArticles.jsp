@@ -4,7 +4,7 @@
 <div class="col-md-9">
     <div>
         <jsp:include page="./../../header/nav/navpath.jsp"/>
-    <%--如果不是点击显示正文时，显示简要文--%>
+        <%--如果不是点击显示正文时，显示简要文--%>
         <c:if test="${requestScope.articleData==null}">
             <c:forEach items="${requestScope.pageBean.lists}" var="nat">
                 <div class="page_header">
@@ -31,19 +31,26 @@
                     </c:if>
                     <c:if test="${requestScope.pageBean.currPage!=1}">
                         <li><a href="${pageContext.request.contextPath}/nowArticle?currentPage=1">首页</a></li>
-                        <li><a href="${pageContext.request.contextPath}/nowArticle?currentPage=${requestScope.pageBean.currPage-1}">&laquo;</a></li>
+                        <li>
+                            <a href="${pageContext.request.contextPath}/nowArticle?currentPage=${requestScope.pageBean.currPage-1}">&laquo;</a>
+                        </li>
                     </c:if>
                     <li class="active"><a name="currentPage">第${requestScope.pageBean.currPage}页</a></li>
                     <c:if test="${requestScope.pageBean.currPage>requestScope.pageBean.totalPage}">
                         <li class="disabled"><a>&raquo;</a></li>
                     </c:if>
                     <c:if test="${requestScope.pageBean.currPage<=requestScope.pageBean.totalPage}">
-                        <li><a href="${pageContext.request.contextPath}/nowArticle?currentPage=${requestScope.pageBean.currPage+1}">&raquo;</a></li>
-                        <li><a href="${pageContext.request.contextPath}/nowArticle?currentPage=${requestScope.pageBean.totalPage+1}">尾页</a></li>
+                        <li>
+                            <a href="${pageContext.request.contextPath}/nowArticle?currentPage=${requestScope.pageBean.currPage+1}">&raquo;</a>
+                        </li>
+                        <li>
+                            <a href="${pageContext.request.contextPath}/nowArticle?currentPage=${requestScope.pageBean.totalPage+1}">尾页</a>
+                        </li>
                     </c:if>
                     <li>
                         &nbsp;
-                        <select class="form-control" name="currentPage" style="width: 70px;display: inline" onchange="location.href=this.value;">
+                        <select class="form-control" name="currentPage" style="width: 70px;display: inline"
+                                onchange="location.href=this.value;">
                             <c:forEach var="lba" begin="1" end="${requestScope.pageBean.totalPage+1}" step="1">
                                 <option value="${pageContext.request.contextPath}/nowArticle?currentPage=${lba}">${lba}</option>
                             </c:forEach>
@@ -63,27 +70,42 @@
                     <div class="col-md-5" style="margin: 0;padding: 0;">
                         <p><span class="glyphicon glyphicon-user"></span> ${requestScope.articleData.author.authorname}&nbsp;&nbsp;
                             <span class="glyphicon glyphicon-tags"></span>&nbsp;&nbsp;${requestScope.articleData.category.categoryname}&nbsp;&nbsp;
-                                ${requestScope.articleData.article.clickcount} <span class="glyphicon glyphicon-eye-open"></span>
+                                ${requestScope.articleData.article.clickcount} <span
+                                    class="glyphicon glyphicon-eye-open"></span>
                         </p></div>
                     <div style="font-family: Simsun,serif;font-size: 1.2em;padding: 10px 10px 20px 10px;word-wrap: break-word;line-height: 130%;">
                         <%
                             ArticleVo contents = (ArticleVo) request.getAttribute("articleData");
-                            String content = contents.getArticle().getArticlecontent().replaceAll(" ","</br></br>&nbsp;&nbsp;");
+                            String content = contents.getArticle().getArticlecontent().replaceAll(" ", "</br></br>&nbsp;&nbsp;");
                         %>
-                            <%=content%>
+                        <%=content%>
                     </div>
                 </div>
             </div>
             <div>
-                <!-- JiaThis Button BEGIN -->
-                <script type="text/javascript">
-                    var jiathis_config = {data_track_clickback:'true'};
-                </script>
-                <script type="text/javascript" src="http://v3.jiathis.com/code/jiathis_r.js?btn=r2.gif&amp;uid=2144319" charset="utf-8"></script>
-                <!-- JiaThis Button END -->
-                <!-- UJian Button BEGIN -->
-                <script type="text/javascript" src="http://v1.ujian.cc/code/ujian.js?type=slide"></script>
-                <!-- UJian Button END -->
+
+                <script>window._bd_share_config = {
+                    "common": {
+                        "bdSnsKey": {},
+                        "bdText": "",
+                        "bdMini": "1",
+                        "bdMiniList": false,
+                        "bdPic": "",
+                        "bdStyle": "0",
+                        "bdSize": "16"
+                    },
+                    "slide": {"type": "slide", "bdImg": "0", "bdPos": "right", "bdTop": "100"},
+                    "image": {
+                        "viewList": ["qzone", "tsina", "tqq", "renren", "weixin"],
+                        "viewText": "分享到：",
+                        "viewSize": "16"
+                    },
+                    "selectShare": {
+                        "bdContainerClass": null,
+                        "bdSelectMiniList": ["qzone", "tsina", "tqq", "renren", "weixin"]
+                    }
+                };
+                with (document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)];</script>
             </div>
             </c:if>
         </div>

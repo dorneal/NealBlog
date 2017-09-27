@@ -52,6 +52,7 @@
                                   style="resize: none;"></textarea>
                     </div>
                     <br>
+                    <input type="hidden" name="articlecontent" id="articlecontent">
                     <div id="summernote"></div>
                     <script>
                         $('#summernote').summernote({

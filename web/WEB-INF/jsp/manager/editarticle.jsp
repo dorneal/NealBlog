@@ -57,8 +57,10 @@
                     </div>
                     <br>
                     <div id="summernote">${requestScope.articleVoList.article.articlecontent}</div>
+                    <input type="hidden" name="articlecontent" id="articlecontent">
                     <script>
                         $('#summernote').summernote({
+                            placeholder: '请输入笔记',
                             tabsize: 2,
                             height: 240
                         });
