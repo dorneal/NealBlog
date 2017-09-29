@@ -25,11 +25,11 @@
     <script src="${pageContext.request.contextPath }/js/bootstrap.min.js"></script>
     <script src="${pageContext.request.contextPath }/js/summernote-bs4.js"></script>
     <%--防止恶意解析代码--%>
-    <script type="text/javascript">
-        if (document.domain != 'nealblog.com' && document.domain != 'www.nealblog.com') {
-            window.location.href = 'http://www.nealblog.com/';
-        }
-    </script>
+    <%--<script type="text/javascript">--%>
+        <%--if (document.domain != 'nealblog.com' && document.domain != 'www.nealblog.com') {--%>
+            <%--window.location.href = 'http://www.nealblog.com/';--%>
+        <%--}--%>
+    <%--</script>--%>
     <%--百度统计分析代码--%>
     <script>
         var _hmt = _hmt || [];
