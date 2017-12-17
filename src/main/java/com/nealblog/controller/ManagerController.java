@@ -29,7 +29,7 @@ public class ManagerController {
     /**
      * 最近发布前10条文章记录
      *
-     * @return
+     * @return List
      */
     public List<ArticleEx> findListArticle() {
         return articleService.findListArticle();
@@ -38,7 +38,7 @@ public class ManagerController {
     /**
      * 所有类别记录
      *
-     * @return
+     * @return List
      */
     public List<Category> findListCategory() {
         return categoryService.findListCategory();
@@ -47,7 +47,7 @@ public class ManagerController {
     /**
      * 所有作者记录
      *
-     * @return
+     * @return List
      */
     public List<Author> findListAuthor() {
         return authorService.findListAuthor();
@@ -75,8 +75,8 @@ public class ManagerController {
     /**
      * 分页显示文章管理
      *
-     * @param request
-     * @return
+     * @param request request
+     * @return String
      */
     @RequestMapping("/managerByArticle")
     public String managerByArticle(HttpServletRequest request) {
@@ -96,8 +96,8 @@ public class ManagerController {
     /**
      * 分页处理笔记数据
      *
-     * @param request
-     * @return
+     * @param request request
+     * @return String
      */
     @RequestMapping("/managerByNote")
     public String managerByNote(HttpServletRequest request) {
@@ -117,8 +117,8 @@ public class ManagerController {
     /**
      * 根据ID删除文章
      *
-     * @param articleid
-     * @return
+     * @param articleid articleid
+     * @return String
      */
     @RequestMapping("/deleteArticle")
     public String deleteArticle(int articleid) {
@@ -129,7 +129,7 @@ public class ManagerController {
     /**
      * 根据ID删除笔记
      *
-     * @param articleid
+     * @param articleid articleid
      * @return 返回到笔记页面
      */
     @RequestMapping("/deleteNote")
@@ -143,7 +143,7 @@ public class ManagerController {
      * 1.先查询作者用于显示下拉列表
      * 2.查询类别用于显示下拉列表
      *
-     * @return
+     * @return String
      */
     @RequestMapping("/articlePublish")
     public String articlePublish(HttpServletRequest request) {
@@ -159,7 +159,7 @@ public class ManagerController {
      * 1.先查询作者用于显示下拉列表
      * 2.查询类别用于显示下拉列表
      *
-     * @return
+     * @return String
      */
     @RequestMapping("/notePublish")
     public String notePublish(HttpServletRequest request) {
@@ -173,9 +173,9 @@ public class ManagerController {
     /**
      * 根据ID查询
      *
-     * @param request
-     * @param articleid
-     * @return
+     * @param request   request
+     * @param articleid articleid
+     * @return String
      */
     @RequestMapping("/findByArticleId")
     public String findByArticleId(HttpServletRequest request, int articleid) {
@@ -201,9 +201,9 @@ public class ManagerController {
     /**
      * 用于处理后台搜索处理(笔记)
      *
-     * @param request
-     * @param articletitle
-     * @return
+     * @param request request
+     * @param articletitle articletitle
+     * @return String
      */
     @RequestMapping("/findByNoteSearch")
     public String findByNoteSearch(HttpServletRequest request, String articletitle) {

@@ -11,7 +11,7 @@
     <!-- 大版本号.分支版本号.小版本号  snapshot 快照  alpha内测  beta公测  release稳定版  GA正式发布版本 -->
     <version>1.0-SNAPSHOT</version>
     <!--项目描述-->
-    <description>It's my Blog's repository.</description>
+    <description>It's my blog's repository.</description>
     <build>
         <resources>
             <resource>
