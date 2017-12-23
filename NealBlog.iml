@@ -15,7 +15,7 @@
     <facet type="Spring" name="Spring">
       <configuration>
         <fileset id="web application context" name="MVC application context" removed="true" />
-        <fileset id="fileset2" name="Spring Application Context" removed="false">
+        <fileset id="fileset" name="ApplicationContext Dao" removed="false">
           <file>file://$MODULE_DIR$/config/spring/applicationContext-dao.xml</file>
           <file>file://$MODULE_DIR$/config/spring/applicationContext-service.xml</file>
           <file>file://$MODULE_DIR$/config/spring/applicationContext-transaction.xml</file>
