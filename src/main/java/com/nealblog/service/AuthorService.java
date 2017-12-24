@@ -3,6 +3,7 @@ package com.nealblog.service;
 import com.nealblog.po.Author;
 import com.nealblog.po.AuthorEx;
 import com.nealblog.po.AuthorVo;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
@@ -11,6 +12,7 @@ import java.util.List;
  *
  * @author Neal
  */
+@Service
 public interface AuthorService {
     //博主登录
     Author login(Author author);
