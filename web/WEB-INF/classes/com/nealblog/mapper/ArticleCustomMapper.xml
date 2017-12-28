@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nealblog.mapper.ArticleCustomMapper">
+
+    <!--文章resultMap-->
+    <resultMap id="StringResultMap" type="com.nealblog.po.ArticleEx">
+        <id column="ArticleId" jdbcType="INTEGER" property="articleid"/>
+        <result column="AuthorId" jdbcType="INTEGER" property="authorid"/>
+        <result column="CategoryId" jdbcType="INTEGER" property="categoryid"/>
+        <result column="ArticleTitle" jdbcType="VARCHAR" property="articletitle"/>
+        <result column="ClickCount" jdbcType="INTEGER" property="clickcount"/>
+    </resultMap>
+    <!--加文章正文的文章resultMap-->
+    <resultMap extends="StringResultMap" id="ResultContent" type="com.nealblog.po.ArticleEx">
+        <result column="ArticleContent" jdbcType="LONGVARCHAR" property="articlecontent"/>
+    </resultMap>
+
+    <!--关联查询的resutlMap-->
+    <resultMap id="AACResultMap" type="com.nealblog.po.ArticleVo">
+        <!--关联作者-->
+        <collection column="author" property="author" javaType="com.nealblog.po.AuthorEx">
+            <id column="AuthorId" jdbcType="INTEGER" property="authorid"/>
+            <result column="AuthorName" property="authorname" jdbcType="VARCHAR"/>
+        </collection>
+        <!--关联类别-->
+        <collection column="category" property="category" javaType="com.nealblog.po.Category">
+            <result column="CategoryName" property="categoryname" jdbcType="VARCHAR"/>
+            <result column="CategoryId" property="categoryid" jdbcType="INTEGER"/>
+        </collection>
+        <!--关联文章-->
+        <collection column="article" property="article" javaType="com.nealblog.po.ArticleEx">
+            <id column="ArticleId" jdbcType="INTEGER" property="articleid"/>
+            <result column="AuthorId" jdbcType="INTEGER" property="authorid"/>
+            <result column="ArticleTitle" jdbcType="VARCHAR" property="articletitle"/>
+            <result column="ArticleTime" jdbcType="VARCHAR" property="articletime"/>
+            <result column="ClickCount" jdbcType="INTEGER" property="clickcount"/>
+            <result column="ArticleContent" jdbcType="LONGVARCHAR" property="articlecontent"/>
+            <result column="easyContent" jdbcType="VARCHAR" property="easycontent"/>
+        </collection>
+    </resultMap>
+
+    <!--查找所有文章标题，显示在目录树-->
+    <select id="findArticleTitle" resultMap="StringResultMap">
+    SELECT ArticleTitle,ClickCount FROM article WHERE article.ArticleTime LIKE "2017%" ORDER BY article.ClickCount DESC limit 0,50
+    </select>
+    <!--查找最近的文章，分页显示在右边简要显示-->
+    <select id="findNowArticle" parameterType="int" resultMap="AACResultMap">
+    SELECT
+      article.ArticleTitle,
+      author.AuthorName,
+      article.ClickCount,
+      article.easyContent,
+      category.CategoryName
+    FROM
+      article LEFT JOIN
+      author ON(article.AuthorId=author.AuthorId),
+      category
+    WHERE
+      article.CategoryId=3
+    GROUP BY
+      article.ArticleId
+    ORDER BY
+      ArticleTime DESC
+    limit #{startpage},#{size}
+  </select>
+
+    <!--查找点击后的正文-->
+    <select id="findArticleContent" parameterType="java.lang.String" resultMap="AACResultMap">
+        SELECT
+            category.CategoryName,
+            author.AuthorName,
+            article.ArticleTitle,
+            article.ArticleContent,
+            article.ClickCount
+        FROM
+            article
+        LEFT JOIN
+            author
+        ON(article.AuthorId=author.AuthorId)
+        LEFT JOIN
+            category
+        ON(article.CategoryId=category.CategoryId)
+        WHERE
+            article.ArticleTitle=#{ArticleTitle}
+    </select>
+
+    <!--查询文章表中文章总记录数-->
+    <select id="findPageCountByArticle" resultType="int">
+        SELECT COUNT(*) FROM article WHERE article.CategoryId=3
+    </select>
+    <!--查询文章表中笔记记录数-->
+    <select id="findPageCountByNote" resultType="int">
+        SELECT COUNT(*) FROM article WHERE article.CategoryId=2
+    </select>
+
+    <!--更新点击数-->
+    <update id="updateArticleCount" parameterType="java.lang.String">
+        UPDATE article set ClickCount = ClickCount + 1 WHERE ArticleTitle=#{ArticleTitle}
+    </update>
+
+    <!--处理站内搜索-->
+    <select id="findBySearch" parameterType="java.lang.String" resultMap="AACResultMap">
+    SELECT
+      article.ArticleTitle,
+      author.AuthorName,
+      article.ClickCount,
+      article.easyContent,
+      category.CategoryName
+    FROM
+      article LEFT JOIN author ON(article.AuthorId=author.AuthorId),category
+    WHERE
+      article.ArticleTitle LIKE CONCAT('%',#{articleTitle},'%')
+    AND
+        article.CategoryId<![CDATA[ <> ]]>2
+    GROUP BY
+     article.ArticleTitle
+    ORDER BY
+     article.ClickCount DESC;
+    </select>
+
+    <!--处理站内搜索-->
+    <select id="findBySearch2" parameterType="java.lang.String" resultMap="AACResultMap">
+        SELECT
+        article.ArticleTitle,
+        author.AuthorName,
+        article.ClickCount,
+        article.easyContent,
+        category.CategoryName
+        FROM
+        article LEFT JOIN author ON(article.AuthorId=author.AuthorId),category
+        WHERE
+        article.ArticleTitle LIKE CONCAT('%',#{articleTitle},'%')
+        AND
+        article.CategoryId=2
+        GROUP BY
+        article.ArticleTitle
+        ORDER BY
+        article.ClickCount DESC;
+    </select>
+
+    <!--查询最新的10条文章记录-->
+    <select id="findListArticle" resultType="articleex">
+        select ArticleId,ArticleTitle,ArticleTime,ClickCount FROM article ORDER BY ArticleTime DESC limit 0,10
+    </select>
+
+    <!--文章管理-->
+    <!--查找最近的笔记，分页显示在右边简要显示-->
+    <select id="findNowNote" parameterType="int" resultMap="AACResultMap">
+    SELECT
+    article.ArticleTitle,
+    author.AuthorName,
+    article.ClickCount,
+    article.easyContent,
+    category.CategoryName
+    FROM
+    article LEFT JOIN
+    author ON(article.AuthorId=author.AuthorId),
+    category
+    WHERE
+    article.CategoryId=2
+    GROUP BY
+    article.ArticleId
+    ORDER BY
+    ArticleTime DESC
+    limit #{startpage},#{size}
+</select>
+
+    <!--用于博主，分页查询显示文章记录-->
+    <select id="findNowArticles" parameterType="int" resultMap="AACResultMap">
+    SELECT
+        article.ArticleId,
+        article.ArticleTitle,
+        article.ArticleTime,
+        article.ClickCount
+        FROM
+        article
+        WHERE
+        article.CategoryId<![CDATA[ <> ]]>2
+        ORDER BY
+        ArticleTime DESC
+        limit #{startpage},#{size}
+</select>
+
+    <!--用于博主，分页查询显示笔记记录-->
+    <select id="findNowNotes" parameterType="int" resultMap="AACResultMap">
+        SELECT
+        article.ArticleId,
+        article.ArticleTitle,
+        article.ArticleTime,
+        article.ClickCount
+        FROM
+        article
+        WHERE
+        article.CategoryId=2
+        ORDER BY
+        ArticleTime DESC
+        limit #{startpage},#{size}
+    </select>
+
+    <!--根据ID删除文章-->
+    <delete id="deleteArticleById" parameterType="int">
+        DELETE FROM article WHERE article.ArticleId=#{articleid};
+    </delete>
+
+    <!--用于博主，更新文章-->
+    <select id="findByArticleId" parameterType="int" resultMap="AACResultMap">
+        SELECT
+        category.CategoryName,
+        category.CategoryId,
+        author.AuthorId,
+        author.AuthorName,
+        article.ArticleId,
+        article.ArticleTime,
+        article.ArticleTitle,
+        article.easyContent,
+        article.ArticleContent
+        FROM
+        article
+        LEFT JOIN
+        author
+        ON(article.AuthorId=author.AuthorId)
+        LEFT JOIN
+        category
+        ON(article.CategoryId=category.CategoryId)
+        WHERE
+        article.ArticleId=#{articleid}
+        </select>
+    <!--后台搜索查询-->
+    <select id="findByArticleTitleSearch" parameterType="java.lang.String" resultMap="AACResultMap">
+    SELECT
+    article.ArticleId,
+    article.ArticleTitle,
+    article.ArticleTime,
+    article.ClickCount
+    FROM
+    article
+    WHERE
+    article.CategoryId<![CDATA[ <> ]]>2
+    AND
+    article.ArticleTitle LIKE CONCAT('%',#{articleTitle},'%')
+    ORDER BY
+    ArticleTime DESC
+</select>
+
+    <select id="findByNoteTitleSearch" parameterType="java.lang.String" resultMap="AACResultMap">
+        SELECT
+        article.ArticleId,
+        article.ArticleTitle,
+        article.ArticleTime,
+        article.ClickCount
+        FROM
+        article
+        WHERE
+        article.CategoryId=2
+        AND
+        article.ArticleTitle LIKE CONCAT('%',#{articleTitle},'%')
+        ORDER BY
+        ArticleTime DESC
+    </select>
+    <!--根据ID更新文章-->
+    <update id="updateArticleByArticleId" parameterType="articleEx">
+
+UPDATE article SET
+ article.`ArticleTitle`=#{articletitle},
+ article.`ArticleTime`=#{articletime},
+ article.`easyContent`=#{easycontent},
+ article.`ArticleContent`=#{articlecontent}
+ WHERE article.`ArticleId`=#{articleid}
+    </update>
+    <!--插入数据-->
+    <insert id="insertArticle" parameterType="articleEx">
+    INSERT INTO
+    article(article.ArticleTitle,article.AuthorId,article.ArticleTime,article.CategoryId,article.easyContent,article.ArticleContent)
+    VALUE(#{articletitle},#{authorid},#{articletime},#{categoryid},#{easycontent},#{articlecontent})
+    </insert>
+
+    <!--根据文章标题查找是否有这个记录-->
+    <select id="findByTitle" parameterType="java.lang.String" resultType="articleEx">
+        SELECT * FROM article WHERE ArticleTitle=#{articletitle}
+    </select>
+    <select id="findByTitleAndId" parameterType="articleEx" resultType="articleEx">
+        SELECT * FROM article WHERE ArticleTitle=#{articletitle} AND ArticleId<![CDATA[ <> ]]>#{articleid}
+    </select>
+
+    <!--根据左侧栏点击查询-->
+    <select id="findByNoteTitle" parameterType="java.lang.String" resultMap="AACResultMap">
+        SELECT * FROM article WHERE article.CategoryId=2 AND article.ArticleTitle LIKE CONCAT('%',#{articleTitle},'%')
+    </select>
+</mapper>
