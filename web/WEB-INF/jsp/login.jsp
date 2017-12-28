@@ -2,7 +2,7 @@
 <%--资源引用--%>
 <jsp:include page="header/header-res.jsp"/>
 <body>
-<div class="container" style="margin-top: 10px;font-family: 微软雅黑;font-size: 1.2em;">
+<div class="container" style="margin-top: 10px;font-family: 微软雅黑,serif;font-size: 1.2em;">
     <div class="jumbotron">
         <form class="form-horizontal" role="form" action="${pageContext.request.contextPath}/login/login"
               method="post">

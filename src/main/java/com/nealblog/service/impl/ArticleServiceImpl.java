@@ -12,6 +12,8 @@ import java.util.List;
 
 /**
  * 文章service实现类
+ *
+ * @author neal
  */
 public class ArticleServiceImpl implements ArticleService {
     @Autowired

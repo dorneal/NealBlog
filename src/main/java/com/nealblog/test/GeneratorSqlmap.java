@@ -16,14 +16,13 @@ import org.mybatis.generator.internal.DefaultShellCallback;
  *
  */
 public class GeneratorSqlmap {
-	public void generator() throws Exception {
+	private void generator() throws Exception {
 		List<String> warnings = new ArrayList<String>();
-		boolean overwrite = true;
 		// 加载配置文件
 		File configFile = new File("./config/mybatis/generatorConfig.xml");
 		ConfigurationParser cp = new ConfigurationParser(warnings);
 		Configuration config = cp.parseConfiguration(configFile);
-		DefaultShellCallback callback = new DefaultShellCallback(overwrite);
+		DefaultShellCallback callback = new DefaultShellCallback(true);
 		MyBatisGenerator myBatisGenerator = new MyBatisGenerator(config, callback, warnings);
 		myBatisGenerator.generate(null);
 	}

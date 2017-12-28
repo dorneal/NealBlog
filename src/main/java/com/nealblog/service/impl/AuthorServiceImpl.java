@@ -7,6 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
+/**
+ * @author neal
+ */
 public class AuthorServiceImpl implements AuthorService {
     @Autowired
     private AuthorCustomMapper authorCustomMapper;
