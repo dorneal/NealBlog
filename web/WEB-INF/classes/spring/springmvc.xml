@@ -70,6 +70,7 @@
     <!--</bean>-->
 
     <!--静态资源解析（js、css、img等文件）-->
+    <mvc:default-servlet-handler/>
     <mvc:resources mapping="/js/**" location="/js/"/>
     <mvc:resources mapping="/imgs/**" location="/imgs/"/>
     <mvc:resources mapping="/fonts/**" location="/fonts/"/>

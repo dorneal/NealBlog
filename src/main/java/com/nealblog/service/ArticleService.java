@@ -7,6 +7,9 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+/**
+ * @author neal
+ */
 @Service
 public interface ArticleService {
     //查找文章标题,显示在左边栏

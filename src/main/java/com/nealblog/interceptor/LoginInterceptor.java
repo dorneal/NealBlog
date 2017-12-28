@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
  * @author Neal
  */
 public class LoginInterceptor implements HandlerInterceptor {
+    @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object o) throws Exception {
         Author user = (Author) request.getSession().getAttribute("user");
         if (user == null) {
@@ -26,10 +27,12 @@ public class LoginInterceptor implements HandlerInterceptor {
         return true;
     }
 
+    @Override
     public void postHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o, ModelAndView modelAndView) throws Exception {
         System.out.println("postHandle");
     }
 
+    @Override
     public void afterCompletion(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o, Exception e) throws Exception {
         System.out.println("afterCompletion");
     }

@@ -1,5 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" %>
 <script type="text/javascript">
     $(document).ready(function () {
         $("ul#nav").find("li").each(function () {
@@ -55,53 +55,7 @@
                     <a href="${pageContext.request.contextPath}/comment">给我留言</a>
                 </li>
             </ul>
-            <%--暂时不需要登录模块--%>
-            <%-- <ul class="nav navbar-nav navbar-right">
-                 <c:if test="${user!=null}">
-                     <li><a href="#"><span class="glyphicon glyphicon-user"></span> ${user.authorname}</a></li>
-                     <li><a href="${pageContext.request.contextPath}/logout.action"><span class="glyphicon glyphicon-log-in"></span> 退出</a></li>
-                 </c:if>
-                 <c:if test="${user==null}">
-                     <li><a href="#" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-user"></span> 登录</a></li>
-                     <li><a><span class="glyphicon glyphicon-log-in"></span> 退出</a></li>
-                 </c:if>
-             </ul>--%>
         </div>
     </div>
 </nav>
 
-
-<!-- 模态框（Modal） -->
-<%--<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog ">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                    &times;
-                </button>
-                <h4 class="modal-title" id="myModalLabel">
-                    登录
-                </h4>
-            </div>
-            <form method="post" name="login" action="${pageContext.request.contextPath}/login.action">
-                <div class="modal-body">
-                    <div class="form-group">
-                        <label class="control-label">用户名：</label>
-                        <input class="form-control" name="authorEx.authorname">
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label">密码：</label>
-                        <input type="password" class="form-control" name="authorEx.authorpassword">
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭
-                    </button>
-                    <button type="button" class="btn btn-primary" onclick="authorLogin()">
-                        登录
-                    </button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>--%>

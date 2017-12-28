@@ -24,6 +24,7 @@ public class ArticleServiceImpl implements ArticleService {
      *
      * @return
      */
+    @Override
     public List<ArticleEx> findArticleTitle() {
         return articleCustomMapper.findArticleTitle();
     }
@@ -33,6 +34,7 @@ public class ArticleServiceImpl implements ArticleService {
      *
      * @return
      */
+    @Override
     public ArticleVo findArticleContent(String articleTitle) {
         return articleCustomMapper.findArticleContent(articleTitle);
     }
@@ -42,6 +44,7 @@ public class ArticleServiceImpl implements ArticleService {
      *
      * @return
      */
+    @Override
     public PageBean<ArticleVo> findPageData(int currentPage) {
         PageBean<ArticleVo> pageBean = new PageBean<ArticleVo>();
         //封装当前页
@@ -67,6 +70,7 @@ public class ArticleServiceImpl implements ArticleService {
      * @param currentPage
      * @return
      */
+    @Override
     public PageBean<ArticleVo> findPageNote(int currentPage) {
         PageBean<ArticleVo> pageBean = new PageBean<ArticleVo>();
         //封装当前页
@@ -92,6 +96,7 @@ public class ArticleServiceImpl implements ArticleService {
      * @param currentPage
      * @return
      */
+    @Override
     public PageBean<ArticleVo> findByPageArticle(int currentPage) {
         PageBean<ArticleVo> pageBean = new PageBean<ArticleVo>();
         //封装当前页
@@ -117,6 +122,7 @@ public class ArticleServiceImpl implements ArticleService {
      * @param currentPage
      * @return
      */
+    @Override
     public PageBean<ArticleVo> findByPageNote(int currentPage) {
         PageBean<ArticleVo> pageBean = new PageBean<ArticleVo>();
         //封装当前页
@@ -141,6 +147,7 @@ public class ArticleServiceImpl implements ArticleService {
      *
      * @param id
      */
+    @Override
     public void deleteArticleById(int id) {
         articleCustomMapper.deleteArticleById(id);
     }
@@ -151,6 +158,7 @@ public class ArticleServiceImpl implements ArticleService {
      * @param id
      * @return
      */
+    @Override
     public ArticleVo findByArticleId(int id) {
         return articleCustomMapper.findByArticleId(id);
     }
@@ -161,6 +169,7 @@ public class ArticleServiceImpl implements ArticleService {
      * @param articletitle
      * @return
      */
+    @Override
     public List<ArticleVo> findByArticleTitleSearch(String articletitle) {
         return articleCustomMapper.findByArticleTitleSearch(articletitle);
     }
@@ -171,6 +180,7 @@ public class ArticleServiceImpl implements ArticleService {
      * @param articletitle
      * @return
      */
+    @Override
     public List<ArticleVo> findByNoteTitleSearch(String articletitle) {
         return articleCustomMapper.findByNoteTitleSearch(articletitle);
     }
@@ -180,6 +190,7 @@ public class ArticleServiceImpl implements ArticleService {
      *
      * @param articleEx
      */
+    @Override
     public void updateArticleByArticleId(ArticleEx articleEx) {
         articleCustomMapper.updateArticleByArticleId(articleEx);
     }
@@ -189,6 +200,7 @@ public class ArticleServiceImpl implements ArticleService {
      *
      * @param articleEx
      */
+    @Override
     public void insertArticle(ArticleEx articleEx) {
         articleCustomMapper.insertArticle(articleEx);
     }
@@ -199,6 +211,7 @@ public class ArticleServiceImpl implements ArticleService {
      * @param articletitle
      * @return
      */
+    @Override
     public ArticleEx findByTitle(String articletitle) {
         return articleCustomMapper.findByTitle(articletitle);
     }
@@ -209,6 +222,7 @@ public class ArticleServiceImpl implements ArticleService {
      * @param articleEx
      * @return
      */
+    @Override
     public ArticleEx findByTitleAndId(ArticleEx articleEx) {
         return articleCustomMapper.findByTitleAndId(articleEx);
     }
@@ -219,6 +233,7 @@ public class ArticleServiceImpl implements ArticleService {
      * @param articletitle
      * @return
      */
+    @Override
     public List<ArticleVo> findByNoteTitle(String articletitle) {
         return articleCustomMapper.findByNoteTitle(articletitle);
     }
@@ -228,6 +243,7 @@ public class ArticleServiceImpl implements ArticleService {
      *
      * @param articleTitle 文章标题
      */
+    @Override
     public void updateArticleCount(String articleTitle) {
         articleCustomMapper.updateArticleCount(articleTitle);
     }
@@ -238,6 +254,7 @@ public class ArticleServiceImpl implements ArticleService {
      * @param articleTitle
      * @return
      */
+    @Override
     public List<ArticleVo> findBySearch(String articleTitle) {
         return articleCustomMapper.findBySearch(articleTitle);
     }
@@ -248,6 +265,7 @@ public class ArticleServiceImpl implements ArticleService {
      * @param articleTitle
      * @return
      */
+    @Override
     public List<ArticleVo> findBySearch2(String articleTitle) {
         return articleCustomMapper.findBySearch2(articleTitle);
     }
@@ -257,6 +275,7 @@ public class ArticleServiceImpl implements ArticleService {
      *
      * @return
      */
+    @Override
     public List<ArticleEx> findListArticle() {
         return articleCustomMapper.findListArticle();
     }

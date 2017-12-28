@@ -20,6 +20,7 @@ public class AuthorServiceImpl implements AuthorService {
      * @param author
      * @return
      */
+    @Override
     public Author login(Author author) {
         return authorCustomMapper.findByAuthor(author);
     }
@@ -29,6 +30,7 @@ public class AuthorServiceImpl implements AuthorService {
      *
      * @return
      */
+    @Override
     public List<Author> findListAuthor() {
         return authorCustomMapper.findListAuthor();
     }
@@ -38,6 +40,7 @@ public class AuthorServiceImpl implements AuthorService {
      *
      * @param authorid
      */
+    @Override
     public void updatePublishCount(int authorid) {
         authorCustomMapper.updatePublishCount(authorid);
     }

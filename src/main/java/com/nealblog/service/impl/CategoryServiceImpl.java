@@ -19,6 +19,7 @@ public class CategoryServiceImpl implements CategoryService {
      *
      * @return
      */
+    @Override
     public List<Category> findListCategory() {
         return categoryCustomMapper.findListCategory();
     }

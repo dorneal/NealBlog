@@ -87,8 +87,8 @@ public class ArticleController {
     /**
      * 点击查看笔记原文
      *
-     * @param request
-     * @return
+     * @param request request
+     * @return noteContext
      */
     @RequestMapping("/noteContext")
     public String noteContext(HttpServletRequest request) {
@@ -104,7 +104,7 @@ public class ArticleController {
     /**
      * 站内搜索
      *
-     * @param request
+     * @param request request
      * @return
      */
     @RequestMapping("/articleSearch")
@@ -130,8 +130,8 @@ public class ArticleController {
     /**
      * 站内搜索
      *
-     * @param request
-     * @return
+     * @param request request
+     * @return String
      */
     @RequestMapping("/noteSearch")
     public String noteSearch(HttpServletRequest request) {
