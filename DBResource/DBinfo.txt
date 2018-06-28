@@ -1,7 +1,7 @@
-数据库使用的是mysql
-
-表的创建以及表之间约束
-4个表（Author,Article,Commont,Category）
+-- 数据库使用的是mysql
+--
+-- 表的创建以及表之间约束
+-- 4个表（Author,Article,Commont,Category）
 DROP TABLE IF EXISTS Article;
 
 DROP TABLE IF EXISTS Author;
@@ -19,6 +19,8 @@ CREATE TABLE Article
    AuthorId             INT,
    CategoryId           INT,
    ArticleTitle         VARCHAR(50),
+   ArticleTime   				varchar(50),
+	 easyContent          varchar(255),
    ArticleContent       TEXT,
    ClickCount           INT,
    PRIMARY KEY (ArticleId)
